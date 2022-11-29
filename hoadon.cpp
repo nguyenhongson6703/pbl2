@@ -3,7 +3,8 @@
 
 int HoaDon::Ma_HD=0;
 
-HoaDon::HoaDon(){
+HoaDon::HoaDon():date(1,1,2021){
+    int n = 0;
     Ma_HD++;
 }
 
@@ -23,11 +24,13 @@ int HoaDon::get_MaHD(){
 
 long long HoaDon::TongTien(){
     long long s=0;
+    return 0;
 }
 
 ostream& operator << (ostream &out, const HoaDon &x){
     for (int i=0; i<x.n; i++)
-        cout << x.data[i].TenSP <<" "<< x.data[i].SoLuong << endl;
+        out << x.data[i].TenSP <<" "<< x.data[i].SoLuong << endl;
+    return out;
 }
 
 istream& operator >> (istream &in, HoaDon &x){ 

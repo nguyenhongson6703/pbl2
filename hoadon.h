@@ -1,5 +1,6 @@
 #ifndef hoa_don
 #define hoa_don
+#include "date.h"
 #include "sanpham.h"
 #include <iostream>
 #include <string>

@@ -18,6 +18,5 @@ class date{
         int getyear();
         friend ostream& operator<<(ostream& output ,  date& x);
         friend istream& operator>>(istream& input, date& x);
-        
-
+    
 };

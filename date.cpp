@@ -1,5 +1,6 @@
-#include"ngaythang.h"
-#include<bits/stdc++.h>
+#include "date.h"
+#include <bits/stdc++.h>
+
 using namespace std;
 date::date(int x, int y, int z){
     this -> day = x;
@@ -42,7 +43,7 @@ int date::getyear(){
 }
 ostream&  operator<<(ostream& output,  date& x){
     output << "Date:  "<< x.getday() <<"/  "<< x.getmonth() <<"/  "<< x.getyear() <<endl;
-
+    return output;
 
 }
 istream& operator>>(istream& input, date& x){
@@ -122,7 +123,7 @@ istream& operator>>(istream& input, date& x){
     x.setday(day);
     x.setmonth(month);
     x.setyear(year);
-
+    return input;
 }
 int main(){
 	date A(12,4,2022);

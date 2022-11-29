@@ -28,6 +28,7 @@ istream &operator >> (istream &in, sanpham &sp){
 }
 ostream &operator << (ostream &out, const sanpham &sp){
     out << setw(6) << sp.ma_sp << setw(10) << sp.ten_sp << setw(10) << sp.dongia_sp << endl;
+    return out;
 } 
 void sanpham::output(){
     cout << "\n Ma san pham:"<< ma_sp;

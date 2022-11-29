@@ -2,6 +2,9 @@
 #include"list.h"
 #include"list.cpp"
 #include"sanpham.h"
+#include <fstream>
+using namespace std;
+
 class List_sp: public List<sanpham> {
     public:
 		bool tim_kiem_theo_id(int value);
