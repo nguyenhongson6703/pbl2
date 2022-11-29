@@ -1,7 +1,6 @@
 #ifndef hoa_don
 #define hoa_don
 #include "sanpham.h"
-jdwnd
 #include <iostream>
 #include <string>
 
