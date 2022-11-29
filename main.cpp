@@ -7,6 +7,9 @@ class List_sp: public List<sanpham> {
 		bool tim_kiem_theo_id(int value);
         void xoa_theo_id(int value);
 };
+
+// Son dep trai
+
 bool List_sp::tim_kiem_theo_id(int value){ 
     NODE<sanpham>* p  = this->gethead();
     for(p ; p != NULL; p = p -> next){
