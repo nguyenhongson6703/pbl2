@@ -19,7 +19,9 @@ bool List_sp::tim_kiem_theo_id(int value){
 
 
 }
-void hoadon(){}
+void hoadon(){
+    cout << "Nhidhsia";
+}
 void List_sp::xoa_theo_id(int value){
     if(tim_kiem_theo_id(value) == true){
         NODE<sanpham>* p;
