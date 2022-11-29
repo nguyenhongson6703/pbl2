@@ -125,8 +125,4 @@ istream& operator>>(istream& input, date& x){
     x.setyear(year);
     return input;
 }
-int main(){
-	date A(12,4,2022);
-	cout << A;
-	return 0;
-}
+
