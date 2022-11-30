@@ -5,6 +5,8 @@
 #include <fstream>
 using namespace std;
 
+// Hoang dezai
+
 class List_sp: public List<sanpham> {
     public:
 		bool tim_kiem_theo_id(int value);
