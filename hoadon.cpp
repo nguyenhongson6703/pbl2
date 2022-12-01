@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 #include "HoaDon.h"
+using namespace std;
 
 int HoaDon::Ma_HD=0;
 
@@ -13,7 +14,7 @@ HoaDon::~HoaDon(){
     delete [] data;
 }
 
-void HoaDon::set_TenSoLuongSP(string ten, int soluong, int i ){
+void HoaDon::set_muahang(string ten, int soluong, int i ){
     this->data[i].TenSP = ten;
     this->data[i].SoLuong = soluong;
 }

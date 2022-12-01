@@ -23,7 +23,6 @@ List<T>::List(){
 
 }
 template<typename T>
-
 List<T>::~List(){
     delete head;
     delete tail;
@@ -33,7 +32,6 @@ template<typename T>
 bool List<T>::kiem_tra_rong(){
     if( head == NULL){
         return true;
-
     }
     return false;
 
@@ -100,11 +98,12 @@ void List<T>::xoa_cuoi(){
 
 
 }
-template <typename T>
 
+template <typename T>
 NODE<T>* List<T>::gethead(){
     return head;
 }
+
 template <typename T>
 NODE<T>* List<T>::gettail(){
     return tail;

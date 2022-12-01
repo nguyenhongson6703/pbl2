@@ -1,5 +1,5 @@
-#ifndef Sanpham_h
-#define Sanpham_h
+#ifndef sanpham_h
+#define sanpham_h
 #include <iostream>
 #include <string>
 using namespace std;

@@ -1,11 +1,11 @@
 #ifndef list_h
 #define list_h
-#include<iostream>
 #include"sanpham.h"
+#include"hoadon.h"
 #include<bits/stdc++.h>
 using namespace std;
-template <typename T>
 
+template <typename T>
 struct NODE{
     T data;
     struct NODE* next;
@@ -14,14 +14,11 @@ struct NODE{
 };
 
 
-
-
 template<typename T>
 class List{
     private:
         NODE<T>* head;
         NODE<T>* tail;
-
     public:
         List();
         ~List();
@@ -33,8 +30,4 @@ class List{
         void xoa_dau();
         void xoa_cuoi();
 };
-
-
-
-
 #endif
