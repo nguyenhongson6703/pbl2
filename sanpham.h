@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
+
 class sanpham {
     private:
         int ma_sp;

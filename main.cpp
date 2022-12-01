@@ -1,10 +1,8 @@
-#include<bits/stdc++.h>
 #include "list.h"
 #include "listsp.h"
-#include "sanpham.h"
-#include "hoadon.h"
-
+#include "sanpham.cpp"
 #include <fstream>
+#include <bits/stdc++.h>
 using namespace std;
 
 int main(){

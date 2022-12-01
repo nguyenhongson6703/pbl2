@@ -1,10 +1,6 @@
 #include "sanpham.h"
-#include <iostream>
-#include <string>
-#include<bits/stdc++.h>
-
+#include <bits/stdc++.h>
 using namespace std;
-
 
 sanpham :: sanpham(int ma, string ten , long long dg ){
     this -> ma_sp = ma;
@@ -18,7 +14,6 @@ sanpham :: ~sanpham(){
 istream &operator >> (istream &in, sanpham &sp){
 	cout << "\n Nhap ma san pham:";
 	in>> sp.ma_sp;
-////	in.ignore();
 	fflush(stdin);
     cout << "Nhap ten san pham: "; getline(in,sp.ten_sp);
     cout << endl;

@@ -1,6 +1,5 @@
 #include "date.h"
 #include <bits/stdc++.h>
-
 using namespace std;
 date::date(int x, int y, int z){
     this -> day = x;

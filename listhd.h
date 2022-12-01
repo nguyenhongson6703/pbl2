@@ -9,5 +9,4 @@ class List_hd: public List<HoaDon> {
 	    bool tim_kiem_theo_id(int value);
         void xoa_theo_id(int value);
 };
-
 #endif

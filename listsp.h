@@ -1,7 +1,7 @@
 #ifndef listsp_h
 #define listsp_h
 #include "list.h"
-#include "list.cpp"   // fix bang cho nay
+#include "list.cpp"
 #include "sanpham.h"
 
 class List_sp: public List<sanpham> {
