@@ -6,6 +6,7 @@
 using namespace std;
 
 int main(){
+    //ndasdadasgit 
 	sanpham S(1,"sua",10000);
 	sanpham K(2,"keo",12000);
 	sanpham C(3,"ca rot",13000);
