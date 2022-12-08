@@ -8,7 +8,7 @@ class date{
         int month;
         int year;
     public:
-        date(int x, int y , int z);
+        date(int x=1, int y=1, int z=2022);
         date(const date& x );
         ~date();
         void setday(int x);
