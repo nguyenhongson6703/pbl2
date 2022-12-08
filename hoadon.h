@@ -13,18 +13,18 @@ using namespace std;
 // HÀM ISTREAM, HÀM SET_MUAHANG , ... 
 // nếu muốn chạy thử thì đổi lại string Tensp rồi chạy nghe
 struct muahang {
-    string TenSP;
+    sanpham TenSP;
     //sanpham Tensp;
     int SoLuong;
 };
 
 class HoaDon : public date{
     private:
-        static int Ma_HD;
+        int Ma_HD;
         int n;
         muahang *data;
     public:
-        HoaDon();
+        HoaDon(int n = 10);
         ~HoaDon();
         void set_muahang(string, int, int );
         int get_MaHD();

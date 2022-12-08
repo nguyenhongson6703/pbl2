@@ -1,6 +1,8 @@
 #include "list.h"
 #include "listsp.h"
-#include "sanpham.cpp"
+// #include "sanpham.cpp"
+#include "date.h"
+// #include "date.cpp"
 #include <fstream>
 #include <bits/stdc++.h>
 using namespace std;
@@ -32,5 +34,7 @@ int main(){
     }
     E.xuat();
     FileSP.close();
+    date A(1,2,2022);
+    cout << A;
 	return 0;
 }
