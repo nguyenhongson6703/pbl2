@@ -1,17 +1,14 @@
 #include "list.h"
 #include "listsp.h"
-// #include "sanpham.h"
 #include "listhd.h"
 #include <fstream>
 #include <bits/stdc++.h>
 using namespace std;
 
 int main(){
-    //ndasdadasgit 
 	List_sp E;
     List_hd F;
     char chtensp[100],chma[10],chgia[10];
-
     ifstream FileSP("input.txt");
     while (!FileSP.eof()){
         FileSP.getline(chma,10);
@@ -24,6 +21,10 @@ int main(){
         E.them_cuoi(S);
     }
     E.xuat();
+    HoaDon a;
+    cin >> a;
+    a.TinhGiaTri(E);
+    cout << a;
     FileSP.close();
 	return 0;
 }

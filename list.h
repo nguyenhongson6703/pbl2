@@ -1,7 +1,5 @@
 #ifndef list_h
 #define list_h
-#include"sanpham.h"
-#include"hoadon.h"
 #include<bits/stdc++.h>
 using namespace std;
 

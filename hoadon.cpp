@@ -1,24 +1,21 @@
 #include<bits/stdc++.h>
 #include "HoaDon.h"
+#include "listsp.h"
 using namespace std;
 
+int HoaDon::Ma_HD=0;
 
-HoaDon::HoaDon(int count, int ma): date (){
-    n = count;
-    Ma_HD = ma;
-    data = new muahang[n];
+HoaDon::HoaDon(): date (){
+    Ma_HD++;
+    data = new muahang[100];
 }
 
 HoaDon::~HoaDon(){
+    Ma_HD--;
     delete [] data;
 }
 
-// void HoaDon::set_muahang(string ten, int soluong, int i ){
-//     this->data[i].TenSP = ten;
-//     this->data[i].SoLuong = soluong;
-// }
-
-void set_hoadon(){
+void HoaDon::set_hoadon(){
     while(true){
         cout << "Menu"<< endl;
         cout << "1.Them loai san pham." << endl;
@@ -31,7 +28,6 @@ void set_hoadon(){
         if (check == 1) {
             string str;
             int n;
-            
             cout << "Nhap ten san pham: "; 
             fflush(stdin);
 
@@ -56,14 +52,19 @@ int HoaDon::get_MaHD(){
     return this->Ma_HD;
 }
 
-long long HoaDon::TongTien(){
-    long long s=0;
-    return 0;
+void HoaDon::TinhGiaTri(List_sp &x) {
+    long long sum=0;
+    for (int i=0; i<n; i++){
+        this->data[i].GiaTri = this->data[i].SoLuong*(x.gia_theo_ten(this->data[i].TenSP));
+        sum+= this->data[i].GiaTri;
+    }
+    this->tongtien = sum;
 }
 
 ostream& operator << (ostream &out, const HoaDon &x){
     for (int i=0; i<x.n; i++)
-        out << x.data[i].TenSP <<" "<< x.data[i].SoLuong << endl;
+        out << i+1 << ". " << x.data[i].TenSP <<" "<< x.data[i].SoLuong <<" " << x.data[i].GiaTri << endl;
+    out << "Tong tien : "<< x.tongtien;
     return out;
 }
 
@@ -72,7 +73,7 @@ istream& operator >> (istream &in, HoaDon &x){
     bool kt = true;
     while (kt) {
         cout << "   Nhap ten san pham: \n";
-        cout << "--> "; getline(in,x.data[i].TenSP);
+        cout << "--> ";fflush(stdin) ;getline(in,x.data[i].TenSP);
         cout << "   Nhap so luong san pham: \n";
         cout << "--> ", in >> x.data[i].SoLuong;
         int k;
