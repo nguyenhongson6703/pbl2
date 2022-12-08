@@ -10,3 +10,15 @@ mytom
 4
 keo 
 1000
+5
+my chinh
+20000
+6
+chao goi
+10000
+7
+ca rot
+13000
+8
+bot ot 
+20000

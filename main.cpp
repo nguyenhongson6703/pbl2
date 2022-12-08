@@ -1,22 +1,15 @@
 #include "list.h"
 #include "listsp.h"
-#include "sanpham.cpp"
+// #include "sanpham.h"
+#include "listhd.h"
 #include <fstream>
 #include <bits/stdc++.h>
 using namespace std;
 
 int main(){
     //ndasdadasgit 
-	sanpham S(1,"sua",10000);
-	sanpham K(2,"keo",12000);
-	sanpham C(3,"ca rot",13000);
-	sanpham T(4,"trung",11000);
 	List_sp E;
-	E.them_cuoi(S);
-	E.them_cuoi(K);
-	E.them_cuoi(C);
-	E.them_cuoi(T);
-    
+    List_hd F;
     char chtensp[100],chma[10],chgia[10];
 
     ifstream FileSP("input.txt");

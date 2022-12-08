@@ -5,7 +5,7 @@ using namespace std;
 int HoaDon::Ma_HD=0;
 
 HoaDon::HoaDon():date(1,1,2021){
-    int n = 0;
+    n = 0;
     Ma_HD++;
 }
 
