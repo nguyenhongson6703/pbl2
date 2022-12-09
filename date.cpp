@@ -40,7 +40,7 @@ int date::getyear(){
     return this -> year;
 
 }
-ostream&  operator<<(ostream& output,  date& x){
+ostream&  operator<<(ostream& output, date& x){
     output << "Date:  "<< x.getday() <<"/  "<< x.getmonth() <<"/  "<< x.getyear() <<endl;
     return output;
 
@@ -55,7 +55,7 @@ istream& operator>>(istream& input, date& x){
             cout << "\n Hay nhap lai gia tri cua nam:";
         }
 
-    }while(year < 2022);
+    }while(year > 2022);
 
     // nhap vao thang
     do{
