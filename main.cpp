@@ -1,6 +1,6 @@
 #include "list.h"
 #include "listsp.h"
-// #include "sanpham.cpp"
+#include "sanpham.h"
 #include "date.h"
 // #include "date.cpp"
 #include <fstream>
@@ -9,15 +9,7 @@ using namespace std;
 
 int main(){
     //ndasdadasgit 
-	sanpham S(1,"sua",10000);
-	sanpham K(2,"keo",12000);
-	sanpham C(3,"ca rot",13000);
-	sanpham T(4,"trung",11000);
 	List_sp E;
-	E.them_cuoi(S);
-	E.them_cuoi(K);
-	E.them_cuoi(C);
-	E.them_cuoi(T);
     
     char chtensp[100],chma[10],chgia[10];
 

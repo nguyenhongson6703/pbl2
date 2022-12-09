@@ -2,23 +2,56 @@
 #include "HoaDon.h"
 using namespace std;
 
-int HoaDon::Ma_HD=0;
 
-HoaDon::HoaDon():date(1,1,2021){
-    int n = 0;
-    Ma_HD++;
+HoaDon::HoaDon(int count, int ma): date (){
+    n = count;
+    Ma_HD = ma;
+    data = new muahang[n];
 }
 
 HoaDon::~HoaDon(){
-    Ma_HD--;
     delete [] data;
 }
 
-void HoaDon::set_muahang(string ten, int soluong, int i ){
-    this->data[i].TenSP = ten;
-    this->data[i].SoLuong = soluong;
-}
+// void HoaDon::set_muahang(string ten, int soluong, int i ){
+//     this->data[i].TenSP = ten;
+//     this->data[i].SoLuong = soluong;
+// }
 
+void set_hoadon(){
+    while(true){
+        cout << "Menu"<< endl;
+        cout << "1.Them loai san pham." << endl;
+        cout << "2.Xoa loai san pham." << endl;
+        cout << "3.Thay doi thong tin loai san pham." << endl;
+        cout << "4.Thay doi ngay thang.";
+        cout << "5.Thoat!." << endl;
+        cout << "Moi ban chon tinh nang: " << endl;
+        int check; cin >>check;
+        if (check == 1) {
+            string str;
+            int n;
+            
+            cout << "Nhap ten san pham: "; 
+            fflush(stdin);
+
+        }
+        else if (check == 2) {
+
+        }
+        else if ( check == 3) {
+
+        }
+        else if (check == 4) {
+
+        }
+        else if (check == 5){
+            cout << "Ket thuc chinh sua hoa don!" << endl;
+            break;
+        }
+    }
+    
+}
 int HoaDon::get_MaHD(){
     return this->Ma_HD;
 }
