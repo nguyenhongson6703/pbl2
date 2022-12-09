@@ -18,7 +18,7 @@ void List_hd :: doc_hd (){
 }
 void List_hd :: ghi_hd (){
     string s;
-    s = "hoadon.txt";
+    s = "hoadon_op.txt";
     this->xuat(s);
 }
 void List_hd::xoa_theo_id(int value){

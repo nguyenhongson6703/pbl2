@@ -16,7 +16,7 @@ long long List_sp::gia_theo_ten(string value){
 }
 void List_sp :: doc_sp(){
     char chtensp[100],chma[10],chgia[10];
-    ifstream FileSP("input.txt");
+    ifstream FileSP("sanpham_ip.txt");
     while (!FileSP.eof()){
         FileSP.getline(chma,10);
         int ma = atoi(chma);
@@ -31,7 +31,7 @@ void List_sp :: doc_sp(){
 }
 void List_sp :: ghi_sp(){
     string s;
-    s = "output_hd.txt";
+    s = "sanpham_op.txt";
     this->xuat(s);
 }
 
