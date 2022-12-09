@@ -1,5 +1,7 @@
 #pragma once
 #include<iostream>
+#include<bits/stdc++.h>
+
 using namespace std;
 
 class date{
@@ -19,5 +21,6 @@ class date{
         int getyear();
         friend ostream& operator<<(ostream& output , date& x);
         friend istream& operator>>(istream& input, date& x);
+        void doctufile();
     
 };
