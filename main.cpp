@@ -1,14 +1,12 @@
 #include "list.h"
 #include "listsp.h"
-#include "sanpham.h"
+#include "listhd.h"
 #include "date.h"
-// #include "date.cpp"
 #include <fstream>
 #include <bits/stdc++.h>
 using namespace std;
 
 int main(){
-    //ndasdadasgit 
 	List_sp E;
     
     char chtensp[100],chma[10],chgia[10];
@@ -26,7 +24,11 @@ int main(){
     }
     E.xuat();
     FileSP.close();
-    date A(1,2,2022);
-    cout << A;
+
+    HoaDon a;
+    cin >> a;
+    a.tinhGiaTri(E);
+    cout << a;
+
 	return 0;
 }

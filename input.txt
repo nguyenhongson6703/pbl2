@@ -1,14 +1,14 @@
 1 
-sua 
+sua
 10000
 2 
-trung 
+trung
 3000
-3 
-mytom 
+3
+my tom
 2000
 4
-keo 
+keo
 1000
 5
 my chinh
@@ -20,5 +20,5 @@ chao goi
 ca rot
 13000
 8
-bot ot 
+bot ot
 20000

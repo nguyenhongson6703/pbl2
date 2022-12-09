@@ -2,21 +2,17 @@
 #include "HoaDon.h"
 using namespace std;
 
-
-HoaDon::HoaDon(int count, int ma): date (){
-    n = count;
-    Ma_HD = ma;
-    data = new muahang[n];
+int HoaDon :: Ma_HD = 0;
+HoaDon::HoaDon(){
+    Ma_HD++;
+    data = new muahang[100];
+    ngay = date();
 }
 
 HoaDon::~HoaDon(){
+    Ma_HD--;
     delete [] data;
 }
-
-// void HoaDon::set_muahang(string ten, int soluong, int i ){
-//     this->data[i].TenSP = ten;
-//     this->data[i].SoLuong = soluong;
-// }
 
 void set_hoadon(){
     while(true){
@@ -56,31 +52,37 @@ int HoaDon::get_MaHD(){
     return this->Ma_HD;
 }
 
-long long HoaDon::TongTien(){
-    long long s=0;
-    return 0;
+void HoaDon :: tinhGiaTri (List_sp &x){
+    long long sum = 0;
+    for (int i=0;i <this->n; i++){
+        this->data[i].GiaTri = this->data[i].SoLuong * (x.gia_theo_ten(this->data[i].TenSP));
+        sum+= this->data[i].GiaTri;
+    }
+    this->tongtien = sum;
 }
-
-ostream& operator << (ostream &out, const HoaDon &x){
+ostream& operator << (ostream &out, HoaDon &x){
+    out << "Hoa don " << x.Ma_HD << endl;
+    out << x.ngay;
     for (int i=0; i<x.n; i++)
-        out << x.data[i].TenSP <<" "<< x.data[i].SoLuong << endl;
+        out << i + 1 << ". " << x.data[i].TenSP <<" "<< x.data[i].SoLuong << " " << x.data[i].GiaTri << endl;
+    out << "Tong tien: " << x.tongtien;
     return out;
 }
 
 istream& operator >> (istream &in, HoaDon &x){ 
-    int i=0;
-    bool kt = true;
-    while (kt) {
-        cout << "   Nhap ten san pham: \n";
-        cout << "--> "; getline(in,x.data[i].TenSP);
-        cout << "   Nhap so luong san pham: \n";
-        cout << "--> ", in >> x.data[i].SoLuong;
-        int k;
-        cout << "   Nhan phim 1 de tiep tuc, phim 0 de dung!\n" ;
-        cout << "--> ", in >> k;
-        if (k==1) kt=true; else kt=false;
-        i++;
-    }
+    in >> x.ngay;
+    int check;
+    int i = 0;
+    do{
+        cout << "-->Nhap ten san pham thu "<< i+1<< endl;
+        fflush(stdin);
+        getline(in,x.data[i].TenSP);
+        cout << "-->Nhap so luong san pham:"<< endl;
+        in >> x.data[i].SoLuong;
+        cout << "-->Ban co muon nhap tiep khong (0/1): " << endl;
+        cin >> check;
+        ++i;
+    }while (check);
     x.n = i;
     return in;
 }
