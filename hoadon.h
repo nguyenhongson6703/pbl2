@@ -1,11 +1,11 @@
-#ifndef hoa_don_h
-#define hoa_don_h
+#ifndef hoa_don
+#define hoa_don
 #include "date.h"
-#include "sanpham.h"
-// #include "sanpham.h"
 #include "listsp.h"
 #include <iostream>
 #include <string>
+
+using namespace std;
 
 struct muahang {
     string TenSP;
@@ -25,9 +25,8 @@ class HoaDon{
         ~HoaDon();
         void set_hoadon();
         int get_MaHD();
-        long long TongTien();
-        void TinhGiaTri(List_sp &);
-        friend ostream& operator << (ostream &, const HoaDon &);
+        void tinhGiaTri(List_sp&);
+        friend ostream& operator << (ostream &, HoaDon &);
         friend istream& operator >> (istream &, HoaDon &);
 };
 #endif

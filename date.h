@@ -3,7 +3,7 @@
 using namespace std;
 
 class date{
-    protected:
+    private:
         int day;
         int month;
         int year;
