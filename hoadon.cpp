@@ -80,12 +80,12 @@ ostream& operator << (ostream &out, HoaDon &x){
     out << x.ngay;
     for (int i=0; i<x.n; i++)
         out << i + 1 << ". " << x.data[i].TenSP <<" "<< x.data[i].SoLuong << " " << x.data[i].GiaTri << endl;
-    out << "Tong tien: " << x.tongtien;
+    out << "Tong tien: " << x.tongtien <<endl;
     return out;
 }
 
 istream& operator >> (istream &in, HoaDon &x){ 
-    in >> x.ngay;
+    x.ngay.doctufile();
     int check;
     int i = 0;
     do{

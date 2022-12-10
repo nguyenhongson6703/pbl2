@@ -1,6 +1,7 @@
 #include "listsp.h"
 #include <bits/stdc++.h>
 #include <string>
+#include <fstream>
 using namespace std;
 
 long long List_sp::gia_theo_ten(string value){ 
@@ -12,6 +13,28 @@ long long List_sp::gia_theo_ten(string value){
 		}
         p = p -> next;
     }while (p != NULL);
+}
+
+void List_sp :: doc_sp(){
+    char chtensp[100],chma[10],chgia[10];
+    ifstream FileSP("sanpham_ip.txt");
+    while (!FileSP.eof()){
+        FileSP.getline(chma,10);
+        int ma = atoi(chma);
+        FileSP.getline(chtensp,10);
+        string tensp = chtensp;
+        FileSP.getline(chgia,10);
+        long long gia = atof(chgia);
+        sanpham S(ma,tensp,gia);
+        this->them_cuoi(S);
+    }
+    FileSP.close();    
+}
+
+void List_sp :: ghi_sp(){
+    string s;
+    s = "sanpham_op.txt";
+    this->xuat(s);
 }
 
 // void List_sp::xoa_theo_id(string value){

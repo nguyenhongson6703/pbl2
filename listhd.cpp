@@ -13,7 +13,14 @@ bool List_hd::tim_kiem_theo_id(int value){
 	}
     return false;
 }
+void List_hd :: doc_hd (){
 
+}
+void List_hd :: ghi_hd (){
+    string s;
+    s = "hoadon_op.txt";
+    this->xuat(s);
+}
 void List_hd::xoa_theo_id(int value){
     if(tim_kiem_theo_id(value) == true){
         NODE<HoaDon>* p;

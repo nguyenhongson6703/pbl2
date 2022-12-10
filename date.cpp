@@ -124,4 +124,23 @@ istream& operator>>(istream& input, date& x){
     x.setyear(year);
     return input;
 }
+void date::doctufile(){
+
+    ifstream input("date.txt");
+
+    char songay[100], sothang[100], sonam[100];
+    
+    while(!input.eof()){
+    input >> songay;
+    input >> sothang;
+    input >> sonam;
+
+    }
+    this -> day = atoi(songay);
+    this -> month = atoi(sothang);
+    this ->year = atoi(sonam);
+
+    input.close();
+    
+}
 

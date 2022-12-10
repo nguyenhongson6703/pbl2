@@ -1,6 +1,7 @@
 #ifndef list_h
 #define list_h
 #include<bits/stdc++.h>
+#include <fstream>
 using namespace std;
 
 template <typename T>
@@ -23,7 +24,7 @@ class List{
         NODE<T>* gettail();
         bool kiem_tra_rong();
         void them_cuoi(T& value);
-        void xuat();
+        void xuat(string );
         void xoa_dau();
         void xoa_cuoi();
 };
@@ -82,20 +83,19 @@ void List<T>::them_cuoi(T& value){
 }
 template<typename T>
 
-void List<T>::xuat(){
+void List<T>::xuat(string s){
+    ofstream output(s);
     NODE<T> *p = new NODE<T>;
     p = head;
     do{
         // in du lieu ra
         cout << (p -> data);
+        output << (p->data);
         p = p -> next;
 
-
     }while (p != NULL);
-   
-    
-
 }
+
 template<typename T>
 void List<T>::xoa_dau(){
     NODE<T> *p = head;
