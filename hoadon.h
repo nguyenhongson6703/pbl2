@@ -26,6 +26,7 @@ class HoaDon{
         void set_hoadon();
         int get_MaHD();
         void tinhGiaTri(List_sp&);
+        friend void xoakt(string &str);
         friend ostream& operator << (ostream &, HoaDon &);
         friend istream& operator >> (istream &, HoaDon &);
 };

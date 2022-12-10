@@ -1,6 +1,21 @@
 #include<bits/stdc++.h>
+#include <string>
 #include "HoaDon.h"
 using namespace std;
+
+void xoakt(string &str)
+{
+    for(int i=0;i<str.length();i++)
+    if(str[i]==' '&& str[i+1]==' ')
+    {
+      str.erase(str.begin() + i);
+      i--;
+    }
+    if(str[0]==' ')
+    str.erase(str.begin());
+    if(str[str.length()-1]==' ')
+    str.erase(str.begin() +str.length()-1 );
+}
 
 int HoaDon :: Ma_HD = 0;
 HoaDon::HoaDon(){
@@ -77,6 +92,7 @@ istream& operator >> (istream &in, HoaDon &x){
         cout << "-->Nhap ten san pham thu "<< i+1<< endl;
         fflush(stdin);
         getline(in,x.data[i].TenSP);
+        xoakt(x.data[i].TenSP);
         cout << "-->Nhap so luong san pham:"<< endl;
         in >> x.data[i].SoLuong;
         cout << "-->Ban co muon nhap tiep khong (0/1): " << endl;
