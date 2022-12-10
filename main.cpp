@@ -23,11 +23,11 @@ int main(){
     F.them_cuoi(a);
     F.ghi_hd();
 
-    HoaDon b;
-    cin >> b;
-    b.tinhGiaTri(E);
-    F.them_cuoi(b);
-    F.ghi_hd();
+    // HoaDon b;
+    // cin >> b;
+    // b.tinhGiaTri(E);
+    // F.them_cuoi(b);
+    // F.ghi_hd();
 
 	return 0;
 }

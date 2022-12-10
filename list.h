@@ -1,7 +1,6 @@
 #ifndef list_h
 #define list_h
 #include<bits/stdc++.h>
-#include <fstream>
 using namespace std;
 
 template <typename T>
@@ -24,7 +23,7 @@ class List{
         NODE<T>* gettail();
         bool kiem_tra_rong();
         void them_cuoi(T& value);
-        void xuat(string );
+        void xuat(string s);
         void xoa_dau();
         void xoa_cuoi();
 };
@@ -83,8 +82,7 @@ void List<T>::them_cuoi(T& value){
 }
 template<typename T>
 
-void List<T>::xuat(string s){
-    ofstream output(s);
+void List<T>::xuat(){
     NODE<T> *p = new NODE<T>;
     p = head;
     do{
