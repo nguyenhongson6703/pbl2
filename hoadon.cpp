@@ -48,6 +48,26 @@ void set_hoadon(){
     }
     
 }
+void HoaDon :: xoa (string& s, int vt){
+    int n = s.length();
+    for(int i = vt ; i < n - 1 ;i++){
+        s[i] = s[i+1];
+    }
+    s[n-1] = '\0';
+}
+void HoaDon :: xoakt( string &s) {
+    for (int i=0; i < s.length()-1 ;i++){
+        if(s[i]==' '&& s[i+1]==' ')
+		{
+			xoa(s,i);
+			i--;
+		}
+    if(s[0]==' ')
+		xoa(s,0);
+    if(s[s.length()-1]==' ')
+		xoa(s,s.length() -1);
+    }
+}
 int HoaDon::get_MaHD(){
     return this->Ma_HD;
 }
@@ -77,6 +97,7 @@ istream& operator >> (istream &in, HoaDon &x){
         cout << "-->Nhap ten san pham thu "<< i+1<< endl;
         fflush(stdin);
         getline(in,x.data[i].TenSP);
+        x.xoakt(x.data[i].TenSP);
         cout << "-->Nhap so luong san pham:"<< endl;
         in >> x.data[i].SoLuong;
         cout << "-->Ban co muon nhap tiep khong (0/1): " << endl;
