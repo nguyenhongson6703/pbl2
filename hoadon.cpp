@@ -57,14 +57,14 @@ void HoaDon :: xoa (string& s, int vt){
 }
 void HoaDon :: xoakt( string &s) {
     for (int i=0; i < s.length()-1 ;i++){
-        if(s[i]==' '&& s[i+1]==' ')
+        if(s[i]== NULL && s[i+1]== NULL )
 		{
 			xoa(s,i);
 			i--;
 		}
-    if(s[0]==' ')
+    if(s[0]== NULL )
 		xoa(s,0);
-    if(s[s.length()-1]==' ')
+    if(s[s.length()-1]== NULL )
 		xoa(s,s.length() -1);
     }
 }

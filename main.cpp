@@ -1,10 +1,7 @@
 #include "list.h"
-#include "listsp.cpp"
-#include "listhd.cpp"
-#include "hoadon.cpp"
-#include "sanpham.cpp"
+#include "listsp.h"
+#include "listhd.h"
 #include "date.h"
-#include "date.cpp"
 #include <fstream>
 #include <bits/stdc++.h>
 using namespace std;
