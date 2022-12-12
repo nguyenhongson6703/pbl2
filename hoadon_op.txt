@@ -1,9 +1,12 @@
-Hoa don 6
-Date:  12/  2/  2022
-1. sua 2 20000
-2. trung 6 18000
-Tong tien: 38000
-Hoa don 6
-Date:  12/  2/  2022
-1. trung 6 18000
-Tong tien: 18000
+3
+12
+2
+2022
+45000
+2
+sua
+4
+40000
+keo
+5
+50000
