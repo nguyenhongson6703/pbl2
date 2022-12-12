@@ -22,12 +22,12 @@ class HoaDon{
         date ngay;
     public:
         HoaDon();
+        HoaDon(int, int, muahang*, long long, int, int ,int);
         ~HoaDon();
         void set_hoadon();
         int get_MaHD();
-        void xoa (string&, int);
-        void xoakt (string&);
         void tinhGiaTri(List_sp&);
+        friend void xoakt(string &str);
         friend ostream& operator << (ostream &, HoaDon &);
         friend istream& operator >> (istream &, HoaDon &);
 };

@@ -1,6 +1,21 @@
 #include<bits/stdc++.h>
+#include <string>
 #include "HoaDon.h"
 using namespace std;
+
+void xoakt(string &str)
+{
+    for(int i=0;i<str.length();i++)
+    if(str[i]==' '&& str[i+1]==' ')
+    {
+      str.erase(str.begin() + i);
+      i--;
+    }
+    if(str[0]==' ')
+    str.erase(str.begin());
+    if(str[str.length()-1]==' ')
+    str.erase(str.begin() +str.length()-1 );
+}
 
 int HoaDon :: Ma_HD = 0;
 HoaDon::HoaDon(){
@@ -8,6 +23,20 @@ HoaDon::HoaDon(){
     data = new muahang[100];
     ngay = date();
 }
+
+HoaDon::HoaDon(int mahd, int n, muahang data[], long long tongtien, int day, int moth, int year){
+    // // this->Ma_HD = mahd;
+    // this->Ma_HD ++ ;
+    this->n = n;
+    for (int i=0; i<n; i++){
+        this->data[i].TenSP = data[i].TenSP;
+        this->data[i].SoLuong = data[i].SoLuong;
+        this->data[i].GiaTri = data[i].GiaTri;
+    }
+    this->tongtien = tongtien;
+    this->ngay = date(day,moth,year);
+}
+
 
 HoaDon::~HoaDon(){
     Ma_HD--;
@@ -48,26 +77,7 @@ void set_hoadon(){
     }
     
 }
-void HoaDon :: xoa (string& s, int vt){
-    int n = s.length();
-    for(int i = vt ; i < n - 1 ;i++){
-        s[i] = s[i+1];
-    }
-    s[n-1] = '\0';
-}
-void HoaDon :: xoakt( string &s) {
-    for (int i=0; i < s.length()-1 ;i++){
-        if(s[i]== NULL && s[i+1]== NULL )
-		{
-			xoa(s,i);
-			i--;
-		}
-    if(s[0]== NULL )
-		xoa(s,0);
-    if(s[s.length()-1]== NULL )
-		xoa(s,s.length() -1);
-    }
-}
+
 int HoaDon::get_MaHD(){
     return this->Ma_HD;
 }
@@ -97,7 +107,7 @@ istream& operator >> (istream &in, HoaDon &x){
         cout << "-->Nhap ten san pham thu "<< i+1<< endl;
         fflush(stdin);
         getline(in,x.data[i].TenSP);
-        x.xoakt(x.data[i].TenSP);
+        xoakt(x.data[i].TenSP);
         cout << "-->Nhap so luong san pham:"<< endl;
         in >> x.data[i].SoLuong;
         cout << "-->Ban co muon nhap tiep khong (0/1): " << endl;
