@@ -2,8 +2,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// tim kiems va xoa theo id cua HOADON
-
 bool List_hd::tim_kiem_theo_id(int value){ 
     NODE<HoaDon>* p  = this->gethead();
     for(p ; p != NULL; p = p -> next){
@@ -45,7 +43,6 @@ void List_hd :: doc_hd (){
         }
         HoaDon S(mahd ,n, data, tongtien, day, month, year);
         cout << S;
-        // this->them_cuoi(S);
     }
     FileHD.close();
 }
