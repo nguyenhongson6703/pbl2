@@ -10,5 +10,6 @@ class List_sp: public List<sanpham> {
         void xoa_theo_id(string value);
         void doc_sp();
         void ghi_sp();
+        void in_sp();
 };
 #endif

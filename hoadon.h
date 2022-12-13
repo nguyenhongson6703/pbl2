@@ -22,7 +22,7 @@ class HoaDon{
         date ngay;
     public:
         HoaDon();
-        HoaDon(int, int, muahang*, long long, int, int ,int);
+        HoaDon(int, int, muahang*, long long, int, int, int);
         ~HoaDon();
         void set_hoadon();
         int get_MaHD();

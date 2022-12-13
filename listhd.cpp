@@ -1,4 +1,5 @@
 #include "listhd.h"
+#include "date.h"
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -42,9 +43,8 @@ void List_hd :: doc_hd (){
             data[i].SoLuong = atoi(ch_soluong);
             FileHD.getline(ch_giatri,19);
             data[i].GiaTri = atof(ch_giatri);
-        }  
-
-        HoaDon S(mahd ,n, data, tongtien, day, moth, year);
+        }
+        HoaDon S(mahd ,n, data, tongtien, day,moth,year);
         cout << S;
         this->them_cuoi(S);
     }

@@ -6,3 +6,7 @@
      6  chao goi     10000
      7    ca rot     13000
      8    bot ot     20000
+     9    dau an     45000
+    10    xi dau     12000
+     9    dau an     45000
+    10    xi dau     12000

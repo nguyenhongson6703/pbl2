@@ -24,15 +24,11 @@ HoaDon::HoaDon(){
     ngay = date();
 }
 
-HoaDon::HoaDon(int mahd, int n, muahang data[], long long tongtien, int day, int moth, int year){
-    // // this->Ma_HD = mahd;
+HoaDon::HoaDon(int mahd, int m, muahang data[], long long tongtien,int day,int moth,int year){
+    Ma_HD = mahd;
     // this->Ma_HD ++ ;
-    this->n = n;
-    for (int i=0; i<n; i++){
-        this->data[i].TenSP = data[i].TenSP;
-        this->data[i].SoLuong = data[i].SoLuong;
-        this->data[i].GiaTri = data[i].GiaTri;
-    }
+    n = m;
+    this->data = data;
     this->tongtien = tongtien;
     this->ngay = date(day,moth,year);
 }
@@ -89,6 +85,7 @@ void HoaDon :: tinhGiaTri (List_sp &x){
     }
     this->tongtien = sum;
 }
+
 ostream& operator << (ostream &out, HoaDon &x){
     out << "Hoa don " << x.Ma_HD << endl;
     out << x.ngay;
