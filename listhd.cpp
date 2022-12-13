@@ -3,8 +3,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// tim kiems va xoa theo id cua HOADON
-
 bool List_hd::tim_kiem_theo_id(int value){ 
     NODE<HoaDon>* p  = this->gethead();
     for(p ; p != NULL; p = p -> next){
@@ -17,7 +15,7 @@ bool List_hd::tim_kiem_theo_id(int value){
 
 void List_hd :: doc_hd (){
     char chmahd[10];
-    char chday[10],chmoth[10],chyear[10];
+    char chday[10],chmonth[10],chyear[10];
     char ch_tongtien[19];
     char chn[10];
     char chtensp[50],ch_soluong[10],ch_giatri[19];
@@ -27,12 +25,12 @@ void List_hd :: doc_hd (){
         int mahd = atoi(chmahd);
         FileHD.getline(chday,10);
         int day = atoi(chday);
-        FileHD.getline(chmoth,10);
-        int moth = atoi(chmoth);
+        FileHD.getline(chmonth,10);
+        int month = atoi(chmonth);
         FileHD.getline(chyear,10);
         int year = atoi(chyear);
         FileHD.getline(ch_tongtien,19);
-        long long tongtien = atof(ch_tongtien);
+        long long tongtien = atoll(ch_tongtien);
         FileHD.getline(chn,10);
         int n = atoi(chn);
         muahang data[100];
@@ -44,9 +42,8 @@ void List_hd :: doc_hd (){
             FileHD.getline(ch_giatri,19);
             data[i].GiaTri = atof(ch_giatri);
         }
-        HoaDon S(mahd ,n, data, tongtien, day,moth,year);
+        HoaDon S(mahd ,n, data, tongtien, day,month,year);
         cout << S;
-        this->them_cuoi(S);
     }
     FileHD.close();
 }

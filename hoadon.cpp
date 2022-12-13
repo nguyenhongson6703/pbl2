@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 #include <string>
-#include "HoaDon.h"
+#include "hoadon.h"
 using namespace std;
 
 void xoakt(string &str)
@@ -24,15 +24,14 @@ HoaDon::HoaDon(){
     ngay = date();
 }
 
-HoaDon::HoaDon(int mahd, int m, muahang data[], long long tongtien,int day,int moth,int year){
-    Ma_HD = mahd;
-    // this->Ma_HD ++ ;
-    n = m;
+HoaDon::HoaDon(int mahd, int n, muahang data[], long long tongtien, int day, int month, int year){
+    cout << mahd << " " << n << " " << data[0].TenSP << " " << day << month << year <<endl;
+    this->Ma_HD = mahd;
+    this-> n= n;
     this->data = data;
     this->tongtien = tongtien;
-    this->ngay = date(day,moth,year);
+    this->ngay = date(day, month, year);
 }
-
 
 HoaDon::~HoaDon(){
     Ma_HD--;
@@ -73,6 +72,7 @@ void set_hoadon(){
     }
     
 }
+
 int HoaDon::get_MaHD(){
     return this->Ma_HD;
 }

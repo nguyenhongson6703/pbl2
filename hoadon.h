@@ -1,5 +1,5 @@
-#ifndef hoa_don
-#define hoa_don
+#ifndef hoadon_h
+#define hoadon_h
 #include "date.h"
 #include "listsp.h"
 #include <iostream>
