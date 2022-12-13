@@ -24,19 +24,27 @@ HoaDon::HoaDon(){
     ngay = date();
 }
 
-HoaDon::HoaDon(int mahd, int n, muahang data[], long long tongtien, int day, int moth, int year){
-    // // this->Ma_HD = mahd;
-    // this->Ma_HD ++ ;
-    this->n = n;
-    for (int i=0; i<n; i++){
+HoaDon::HoaDon(int mahd, int n, muahang data[], long long tongtien, int day, int month, int year){
+    // this->Ma_HD = mahd;
+    // this->n = n;
+    // for (int i=0; i<n; i++){
+    //     this->data[i].TenSP = data[i].TenSP;
+    //     this->data[i].SoLuong = data[i].SoLuong;
+    //     this->data[i].GiaTri = data[i].GiaTri;
+    // }
+    // this->tongtien = tongtien;
+    // this->ngay = date(day,month,year);
+    cout << mahd << " " << n << " " << data[0].TenSP << " " << day << month << year <<endl;
+    this->Ma_HD = mahd;
+    this-> n= n;
+    for (int i=0; i<this->n ;i++){
         this->data[i].TenSP = data[i].TenSP;
         this->data[i].SoLuong = data[i].SoLuong;
         this->data[i].GiaTri = data[i].GiaTri;
     }
     this->tongtien = tongtien;
-    this->ngay = date(day,moth,year);
+    this->ngay = date(day, month, year);
 }
-
 
 HoaDon::~HoaDon(){
     Ma_HD--;

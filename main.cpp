@@ -7,14 +7,16 @@
 using namespace std;
 
 int main(){
-	List_sp E;
-    E.doc_sp();
-    sanpham a(12, "tuong" , 100000);
-    E.them_cuoi(a);
-    E.xoa_theo_ten("sua");
-    E.ghi_sp();
+	// List_sp E;
+    // E.doc_sp();
+    // sanpham a(12, "tuong" , 100000);
+    // E.them_cuoi(a);
+    // E.xoa_theo_ten("sua");
+    // E.ghi_sp();
 
-    // List_hd F;
+    List_hd F;
+    F.doc_hd();
+    // F.xuat("hoadon_op.txt");
 
     // HoaDon a;
     // cin >> a;
