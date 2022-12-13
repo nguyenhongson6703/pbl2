@@ -16,7 +16,6 @@ int main(){
 
     List_hd F;
     F.doc_hd();
-    F.xuat("hoadon_op.txt");
 
     // HoaDon a;
     // cin >> a;
