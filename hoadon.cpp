@@ -25,7 +25,6 @@ HoaDon::HoaDon(){
 }
 
 HoaDon::HoaDon(int mahd, int n, muahang data[], long long tongtien, int day, int month, int year){
-    cout << mahd << " " << n << " " << data[0].TenSP << " " << day << month << year <<endl;
     this->Ma_HD = mahd;
     this-> n= n;
     this->data = data;
@@ -36,6 +35,30 @@ HoaDon::HoaDon(int mahd, int n, muahang data[], long long tongtien, int day, int
 HoaDon::~HoaDon(){
     Ma_HD--;
     delete [] data;
+}
+
+int HoaDon::get_n(){
+    return n;
+}
+
+int HoaDon::get_day(){
+    return ngay.getday();
+}
+
+int HoaDon::get_month(){
+    return ngay.getmonth();
+}
+
+int HoaDon::get_year(){
+    return ngay.getyear();
+}
+
+long long HoaDon::get_tongtien(){
+    return tongtien;
+}
+
+muahang HoaDon::get_muahang(int i){
+    return data[i];
 }
 
 void set_hoadon(){

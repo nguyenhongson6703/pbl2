@@ -26,6 +26,12 @@ class HoaDon{
         ~HoaDon();
         void set_hoadon();
         int get_MaHD();
+        int get_n();
+        int get_day();
+        int get_month();
+        int get_year();
+        long long get_tongtien();
+        muahang get_muahang(int i);
         void tinhGiaTri(List_sp&);
         friend void xoakt(string &str);
         friend ostream& operator << (ostream &, HoaDon &);

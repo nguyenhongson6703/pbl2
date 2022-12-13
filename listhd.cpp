@@ -43,12 +43,44 @@ void List_hd :: doc_hd (){
             data[i].GiaTri = atof(ch_giatri);
         }
         HoaDon S(mahd ,n, data, tongtien, day,month,year);
-        cout << S;
     }
     FileHD.close();
 }
 
 void List_hd :: ghi_hd (){
+    ofstream FileHD("hoadon_ip.txt");
+    NODE<HoaDon> *p = new NODE<HoaDon>;
+    p = gethead();
+    do{
+        int n = p->data.get_n();
+        if (p!=gettail()) 
+        {
+            FileHD << (p->data).get_MaHD() << endl << (p->data).get_day() << endl <<(p->data).get_month() << endl << (p->data).get_year() << endl;
+            FileHD << (p->data).get_tongtien() << endl << (p->data).get_n() << endl;
+            for (int i=0; i<n; i++){
+                FileHD << (p->data).get_muahang(i).TenSP << endl;
+                FileHD << (p->data).get_muahang(i).SoLuong << endl;
+                FileHD << (p->data).get_muahang(i).GiaTri << endl;
+            }
+        }
+        else {
+            FileHD << (p->data).get_MaHD() << endl << (p->data).get_day() << endl <<(p->data).get_month() << endl << (p->data).get_year() << endl;
+            FileHD << (p->data).get_tongtien() << endl << (p->data).get_n() << endl;
+            for (int i=0; i<n-1; i++){
+                FileHD << (p->data).get_muahang(i).TenSP << endl;
+                FileHD << (p->data).get_muahang(i).SoLuong << endl;
+                FileHD << (p->data).get_muahang(i).GiaTri << endl;
+            }
+            FileHD << (p->data).get_muahang(n-1).TenSP << endl;
+            FileHD << (p->data).get_muahang(n-1).SoLuong << endl;
+            FileHD << (p->data).get_muahang(n-1).GiaTri ;
+        }
+        p = p -> next;
+    } while (p != NULL);
+    FileHD.close();
+}
+
+void List_hd::in_hd(){
     string s;
     s = "hoadon_op.txt";
     this->xuat(s);
