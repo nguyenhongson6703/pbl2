@@ -31,7 +31,20 @@ void List_sp :: doc_sp(){
     FileSP.close();    
 }
 
-void List_sp :: ghi_sp(){
+void List_sp::ghi_sp(){
+    ofstream FileSP("sanpham_ip.txt");
+    NODE<sanpham> *p = new NODE<sanpham>;
+    p = gethead();
+    do{
+        if (p!=gettail())
+            FileSP << (p->data).get_masp() << endl << (p->data).get_tensp() << endl << (p->data).get_dongiasp() << endl; 
+        else 
+            FileSP << (p->data).get_masp() << endl << (p->data).get_tensp() << endl << (p->data).get_dongiasp() ;
+        p = p -> next;
+    } while (p != NULL);
+}
+
+void List_sp :: in_sp(){
     string s;
     s = "sanpham_op.txt";
     this->xuat(s);

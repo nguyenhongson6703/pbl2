@@ -1,8 +1,18 @@
 #include "listhd.h"
+#include "date.h"
 #include <bits/stdc++.h>
 using namespace std;
 
-bool List_hd::tim_kiem_theo_id(int value){ 
+HoaDon List_hd::tim_kiem_theo_id(int value){ 
+    NODE<HoaDon>* p  = this->gethead();
+    for(p ; p != NULL; p = p -> next){
+    	if((p->data).get_MaHD() == value){
+    		return p->data;
+		}
+	}
+}
+
+bool List_hd:: check_hd(int value){ 
     NODE<HoaDon>* p  = this->gethead();
     for(p ; p != NULL; p = p -> next){
     	if((p->data).get_MaHD() == value){
@@ -39,9 +49,9 @@ void List_hd :: doc_hd (){
             FileHD.getline(ch_soluong,10);
             data[i].SoLuong = atoi(ch_soluong);
             FileHD.getline(ch_giatri,19);
-            data[i].GiaTri = atoll(ch_giatri);
+            data[i].GiaTri = atof(ch_giatri);
         }
-        HoaDon S(mahd ,n, data, tongtien, day, month, year);
+        HoaDon S(mahd ,n, data, tongtien, day,month,year);
         cout << S;
     }
     FileHD.close();
@@ -54,7 +64,7 @@ void List_hd :: ghi_hd (){
 }
 
 void List_hd::xoa_theo_id(int value){
-    if(tim_kiem_theo_id(value) == true){
+    if(check_hd(value) == true){
         NODE<HoaDon>* p;
         p = gethead();
         while (p!= NULL && (p -> data).get_MaHD()!= value)

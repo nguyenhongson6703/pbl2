@@ -85,6 +85,7 @@ void HoaDon :: tinhGiaTri (List_sp &x){
     }
     this->tongtien = sum;
 }
+
 ostream& operator << (ostream &out, HoaDon &x){
     out << "Hoa don " << x.Ma_HD << endl;
     out << x.ngay;

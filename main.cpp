@@ -2,32 +2,50 @@
 #include "listsp.h"
 #include "listhd.h"
 #include "date.h"
-#include <fstream>
-#include <bits/stdc++.h>
-using namespace std;
-
+#include<bits/stdc++.h>
 int main(){
-	// List_sp E;
-    // E.doc_sp();
-    // sanpham a(12, "tuong" , 100000);
-    // E.them_cuoi(a);
-    // E.xoa_theo_ten("sua");
-    // E.ghi_sp();
 
-    List_hd F;
-    F.doc_hd();
+List_sp SP;
+SP.doc_sp();
+    while(true){
+        system("cls");
+        cout << "---------------------------------------MENU---------------------------------------" <<endl;
+        cout << "1.Quan ly san pham." <<endl;
+        cout << "2.Than toan hoa don."<<endl;
+        cout << "3.Quan ly hoa don." << endl;
+        cout << "4.Thoat!" <<endl;
+        cout << "Moi ban chon tinh nang: ";
+        int check; cin >> check;
+        while (check){
+            if(check == 1) {
+                cout << endl << endl;
+                cout << "1. Tra cuu cac loai san pham."<< endl;
+                cout << "2. Chinh sua thong tin cua san pham."<< endl;
+                cout << "3. Thoat!"<< endl;
+                int luachon;
+                cout << " Moi ban chon tinh nang:";
+                cin >> luachon;
+                if(luachon == 1){
 
-    // HoaDon a;
-    // cin >> a;
-    // a.tinhGiaTri(E);
-    // F.them_cuoi(a);
-    // F.ghi_hd();
+                }else if(luachon == 2){
 
-    // HoaDon b;
-    // cin >> b;
-    // b.tinhGiaTri(E);
-    // F.them_cuoi(b);
-    // F.ghi_hd();
+                }else{
+                    break;
+                }
+            }
+            else if (check ==2){
+
+            }
+            else if (check == 3){
+
+            }
+            else if (check == 4){
+                cout << "Ket thuc chuong trinh!" << endl;
+                cout << "----------------------------------------------------------------------------------" <<endl;
+                break;
+            }
+        }
+    }
 
 	return 0;
 }

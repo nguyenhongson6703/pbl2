@@ -11,5 +11,6 @@ class List_sp: public List<sanpham> {
         bool tim_kiem_theo_ten(string value);
         void doc_sp();
         void ghi_sp();
+        void in_sp();
 };
 #endif
