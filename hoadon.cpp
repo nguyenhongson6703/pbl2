@@ -3,6 +3,8 @@
 #include "hoadon.h"
 using namespace std;
 
+int HoaDon :: Ma_HD=0;
+
 void xoakt(string &str)
 {
     for(int i=0;i<str.length();i++)
@@ -16,26 +18,63 @@ void xoakt(string &str)
     if(str[str.length()-1]==' ')
     str.erase(str.begin() +str.length()-1 );
 }
-
-int HoaDon :: Ma_HD = 0;
 HoaDon::HoaDon(){
     Ma_HD++;
-    data = new muahang[100];
+    id = Ma_HD;
     ngay = date();
 }
 
-HoaDon::HoaDon(int mahd, int n, muahang data[], long long tongtien, int day, int month, int year){
-    cout << mahd << " " << n << " " << data[0].TenSP << " " << day << month << year <<endl;
-    this->Ma_HD = mahd;
+HoaDon::HoaDon(int mahd, int n, muahang d[], long long tongtien, int day, int month, int year){
+    this->id = mahd;
     this-> n= n;
-    this->data = data;
+    for(int i=0;i<n;i++){
+        this->data[i].TenSP = d[i].TenSP;
+        this->data[i].SoLuong = d[i].SoLuong;
+        this->data[i].GiaTri = d[i].GiaTri;
+    }
     this->tongtien = tongtien;
     this->ngay = date(day, month, year);
+    this->Ma_HD = mahd;
 }
 
 HoaDon::~HoaDon(){
-    Ma_HD--;
-    delete [] data;
+}
+
+HoaDon& HoaDon:: operator = (const HoaDon& a) {
+    this->id = a.id;
+    this->n = a.n;
+    for(int i=0;i<n;i++){
+        this->data[i].TenSP = a.data[i].TenSP;
+        this->data[i].SoLuong = a.data[i].SoLuong;
+        this->data[i].GiaTri = a.data[i].GiaTri;
+    }
+    this->tongtien = a.tongtien;
+    this->ngay = a.ngay;
+    this->Ma_HD--;
+    return *this;
+}
+int HoaDon::get_n(){
+    return n;
+}
+
+int HoaDon::get_day(){
+    return ngay.getday();
+}
+
+int HoaDon::get_month(){
+    return ngay.getmonth();
+}
+
+int HoaDon::get_year(){
+    return ngay.getyear();
+}
+
+long long HoaDon::get_tongtien(){
+    return tongtien;
+}
+
+muahang HoaDon::get_muahang(int i){
+    return data[i];
 }
 
 void set_hoadon(){
@@ -73,21 +112,21 @@ void set_hoadon(){
     
 }
 
-int HoaDon::get_MaHD(){
-    return this->Ma_HD;
+int HoaDon::get_id(){
+    return this->id;
 }
 
 void HoaDon :: tinhGiaTri (List_sp &x){
     long long sum = 0;
     for (int i=0;i <this->n; i++){
-        this->data[i].GiaTri = this->data[i].SoLuong * (x.gia_theo_ten(this->data[i].TenSP));
+        this->data[i].GiaTri = this->data[i].SoLuong * (x.tim_kiem_theo_ten(this->data[i].TenSP).get_dongiasp());
         sum+= this->data[i].GiaTri;
     }
     this->tongtien = sum;
 }
 
 ostream& operator << (ostream &out, HoaDon &x){
-    out << "Hoa don " << x.Ma_HD << endl;
+    out << "Hoa don " << x.id << endl;
     out << x.ngay;
     for (int i=0; i<x.n; i++)
         out << i + 1 << ". " << x.data[i].TenSP <<" "<< x.data[i].SoLuong << " " << x.data[i].GiaTri << endl;
@@ -96,7 +135,7 @@ ostream& operator << (ostream &out, HoaDon &x){
 }
 
 istream& operator >> (istream &in, HoaDon &x){ 
-    x.ngay.doctufile();
+    cin >> x.ngay;
     int check;
     int i = 0;
     do{

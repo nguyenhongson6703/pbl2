@@ -1,9 +1,6 @@
 1
 sua
 10000
-2
-trung
-3000
 3
 my tom
 2000
@@ -28,3 +25,6 @@ dau an
 10
 xi dau
 12000
+12
+tuong
+240000

@@ -6,9 +6,10 @@
 
 class List_sp: public List<sanpham> {
     public:
-		    long long gia_theo_ten(string value);
+        sanpham tim_kiem_theo_ten(string value);
+        bool check_ten(string value);
         void xoa_theo_ten(string value);
-        bool tim_kiem_theo_ten(string value);
+        void set_dssp();
         void doc_sp();
         void ghi_sp();
         void in_sp();

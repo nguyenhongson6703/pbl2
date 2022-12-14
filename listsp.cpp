@@ -4,17 +4,101 @@
 #include <fstream>
 using namespace std;
 
-long long List_sp::gia_theo_ten(string value){ 
+sanpham List_sp::tim_kiem_theo_ten(string value){ 
 	NODE<sanpham> *p = new NODE<sanpham>;
     p = this->gethead();
     do{
         if((p->data).get_tensp().compare(value) == 0) {
-			return (p->data).get_dongiasp();
+			return (p->data);
 		}
         p = p -> next;
     }while (p != NULL);
 }
+bool List_sp::check_ten(string value){ 
+	NODE<sanpham> *p = new NODE<sanpham>;
+    bool temp = false;
+    p = this->gethead();
+    do{
+        if((p->data).get_tensp().compare(value) == 0) {
+			temp= true;
+            return temp;
+		}
+        p = p -> next;
+    }while (p != NULL);
+    return temp;
+}
 
+void List_sp::xoa_theo_ten(string value){
+    if(check_ten(value) == true){
+        NODE<sanpham>* p;
+        p = gethead();
+        while (p!= NULL && (p -> data).get_tensp()!= value)
+        {
+            p = p -> next;
+        }
+        if(p != NULL){
+            if( p -> prev == NULL){
+                xoa_dau();
+                return;
+            }
+            if(p -> next == NULL){
+                xoa_cuoi();
+                return;
+            }
+        p->prev->next = p->next;
+        p->next->prev = p->prev;
+        p->prev = NULL; 
+        p->next = NULL;
+        delete p;
+        }
+    }else{
+        cout << "\n Khong co san pham ten "<< value<< "trong danh sach san pham!";
+        return;
+    }
+}
+
+void List_sp :: set_dssp(){
+    while(true){
+        cout << "-----------------------------------[ CAP NHAT SAN PHAM ]-----------------------------------"<< endl;
+        cout << "1.Them loai san pham." << endl;
+        cout << "2.Xoa loai san pham." << endl;
+        cout << "3.Cap nhat thong tin loai san pham." << endl;
+        cout << "4.Thoat!" << endl;
+        cout << "Moi ban chon tinh nang: " << endl;
+        int check; cin >>check;
+        if (check == 1) {
+            sanpham s;
+            cin >> s;
+            this->them_cuoi(s);
+            this->ghi_sp();
+        }
+        else if (check == 2) {
+            string str;
+            cout << "Nhap ten san pham can xoa: ";
+            fflush(stdin);
+            cin >> str;
+            this->xoa_theo_ten(str);
+            this->ghi_sp();
+        }
+        else if ( check == 3) {
+            string str;
+            cout << "Nhap ten san pham can cap nhat: ";
+            fflush(stdin);
+            cin >> str;
+            sanpham p;
+            p = this->tim_kiem_theo_ten(str);
+            this->xoa_theo_ten(str);
+            cin >> p;
+            cout << "-->Thong tin san pham sau khi cap nhat<-- "<< endl;
+            cout << p;
+            this->them_cuoi(p);
+        }
+        else{
+            cout << "Ket thuc chinh sua hoa don!" << endl;
+            break;
+        }
+    }   
+}
 void List_sp :: doc_sp(){
     char chtensp[100],chma[10],chgia[10];
     ifstream FileSP("sanpham_ip.txt");
@@ -48,47 +132,4 @@ void List_sp :: in_sp(){
     string s;
     s = "sanpham_op.txt";
     this->xuat(s);
-}
-
-bool List_sp::tim_kiem_theo_ten(string value){ 
-	NODE<sanpham> *p = new NODE<sanpham>;
-    bool temp = false;
-    p = this->gethead();
-    do{
-        if((p->data).get_tensp().compare(value) == 0) {
-			temp= true;
-            return temp;
-		}
-        p = p -> next;
-    }while (p != NULL);
-    return temp;
-}
-
-void List_sp::xoa_theo_ten(string value){
-    if(tim_kiem_theo_ten(value) == true){
-        NODE<sanpham>* p;
-        p = gethead();
-        while (p!= NULL && (p -> data).get_tensp()!= value)
-        {
-            p = p -> next;
-        }
-        if(p != NULL){
-            if( p -> prev == NULL){
-                xoa_dau();
-                return;
-            }
-            if(p -> next == NULL){
-                xoa_cuoi();
-                return;
-            }
-        p->prev->next = p->next;
-        p->next->prev = p->prev;
-        p->prev = NULL; 
-        p->next = NULL;
-        delete p;
-        }
-    }else{
-        cout << "\n Khong co san pham ten "<< value<< "trong danh sach san pham!";
-        return;
-    }
 }
