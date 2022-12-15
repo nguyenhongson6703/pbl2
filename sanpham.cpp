@@ -2,8 +2,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-sanpham :: sanpham(int ma, string ten , long long dg ){
-    this -> ma_sp = ma;
+sanpham :: sanpham(string ten , long long dg ){
     this->ten_sp = ten;
     this->dongia_sp = dg;
 }
@@ -12,30 +11,21 @@ sanpham :: ~sanpham(){
 
 }
 istream &operator >> (istream &in, sanpham &sp){
-	cout << "\n Nhap ma san pham:";
-	in>> sp.ma_sp;
 	fflush(stdin);
     cout << "Nhap ten san pham: "; getline(in,sp.ten_sp);
     cout << endl;
     cout << "Nhap don gia san pham: "; in >> sp.dongia_sp;
-    
     return in;
 }
 ostream &operator << (ostream &out, const sanpham &sp){
-    out << setw(6) << sp.ma_sp << setw(30) << sp.ten_sp << setw(30) << sp.dongia_sp << endl;
+    out << setw(30) << sp.ten_sp << setw(30) << sp.dongia_sp << endl;
     return out;
 } 
-int sanpham:: get_masp(){
-    return this->ma_sp;
-}
 string sanpham:: get_tensp(){
     return this->ten_sp;
 }
 long long sanpham:: get_dongiasp(){
     return this->dongia_sp;
-}
-void sanpham:: set_masp(int x){
-    this->ma_sp = x;
 }
 void sanpham:: set_tensp(string x){
     this->ten_sp = x;
