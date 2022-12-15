@@ -10,6 +10,15 @@ sanpham :: sanpham(string ten , long long dg ){
 sanpham :: ~sanpham(){
 
 }
+
+sanpham& sanpham :: operator = (const sanpham& sp){
+    this->id = sp.id;
+    this->ten_sp = sp.ten_sp;
+    this->dongia_sp = sp.dongia_sp;
+    this->ma_sp--;
+    return *this;
+}
+
 istream &operator >> (istream &in, sanpham &sp){
 	fflush(stdin);
     cout << "Nhap ten san pham: "; getline(in,sp.ten_sp);

@@ -58,6 +58,7 @@ void List_sp::xoa_theo_ten(string value){
 }
 
 void List_sp :: update_dssp(){
+    this->doc_sp();
     while(true){
         cout << "-----------------------------------[ CAP NHAT SAN PHAM ]-----------------------------------"<< endl;
         cout << "1.Them loai san pham." << endl;
@@ -69,7 +70,17 @@ void List_sp :: update_dssp(){
         if (check == 1) {
             do{
                 sanpham s;
-                cin >> s;
+                while(true){
+                    cin >> s;
+                    string str = s.get_tensp();
+                    for (int i=0;i<str.length();i++){
+                        str[i] = tolower(str[i]);
+                    }
+                    if (this->check_ten(str)){
+                        throw string("San pham da co trong danh sach");
+                    }
+                    else break;
+                }
                 this->them_cuoi(s);
                 this->ghi_sp();
                 cout << "-->Danh sach sau khi khem san pham<--"<< endl;
@@ -80,6 +91,7 @@ void List_sp :: update_dssp(){
         }
         else if (check == 2) {
             do{
+                // this->doc_sp();    
                 string str;
                 cout << "Nhap ten san pham can xoa: ";
                 fflush(stdin);
@@ -94,6 +106,7 @@ void List_sp :: update_dssp(){
         }
         else if ( check == 3) {
             do{
+                // this->doc_sp();    
                 string str;
                 cout << "Nhap ten san pham can cap nhat: ";
                 fflush(stdin);

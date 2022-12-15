@@ -140,7 +140,7 @@ istream& operator >> (istream &in, HoaDon &x){
     int check;
     int i = 0;
     do{
-        cout << "-->Nhap ten san pham thu "<< i+1<< endl;
+        cout << "-->Nhap ten san pham thu "<< i+1 << endl;
         fflush(stdin);
         getline(in,x.data[i].TenSP);
         xoakt(x.data[i].TenSP);

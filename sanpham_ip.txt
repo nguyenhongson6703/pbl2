@@ -1,5 +1,7 @@
 sua
 10000
+trung
+3000
 my tom
 2000
 keo
@@ -16,11 +18,3 @@ dau an
 45000
 xi dau
 12000
-tuong
-240000
-dong ho
-3000000
-tuong
-21121
-ao
-150000

@@ -11,6 +11,7 @@ class sanpham {
     public: 
         sanpham (string = "sp1", long long= 0);
         ~sanpham();
+        sanpham& operator = (const sanpham&);
         friend istream &operator >> (istream &in, sanpham &sp);
         friend ostream &operator << (ostream &out, const sanpham &sp);
         string get_tensp();
