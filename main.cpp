@@ -32,11 +32,11 @@ int main(){
                     fflush(stdin);
                     cout << "Ban co muon xem noi dung cu the cua mot san pham (0/1) ? " << endl;
                     cin >> sl1;
-                    do{
+                    while(sl1){
                         string str;
                         cout << "Nhap ten san pham can tim kiem: ";
                         fflush(stdin);
-                        cin >> str;
+                        getline (cin , str);
                         cout << "-->Thong tin san pham can tim<-- " << endl;
                         sanpham p;
                         p = E.tim_kiem_theo_ten(str);
@@ -44,17 +44,21 @@ int main(){
                         fflush(stdin);
                         cout << "Ban co muon tim kiem tiep hay khong (0/1)?" << endl;
                         cin >> sl1;
-                    }while(sl1);
+                    }
                 }
                 else if(sl == 2){
-                    E.update_dssp();
+                    List_sp A;
+                    A.update_dssp();
+                    E = A;
+                    E.ghi_sp();
+                    E.in_sp();
                 }
                 else{
                     break;
                 }
             }
         }
-        else if (check ==2){
+        else if (check == 2){
 
         }
         else if (check == 3){

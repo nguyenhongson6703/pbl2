@@ -1,6 +1,9 @@
 1
 sua
 10000
+2
+trung
+3000
 3
 my tom
 2000
@@ -25,9 +28,15 @@ dau an
 10
 xi dau
 12000
-12
-tuong
-240000
 11
 dong ho
 3000000
+33
+may quat
+100000
+38
+quan
+1111111
+39
+chuot
+20000
