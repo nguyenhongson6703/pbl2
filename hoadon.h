@@ -1,5 +1,5 @@
-#ifndef hoa_don
-#define hoa_don
+#ifndef hoadon_h
+#define hoadon_h
 #include "date.h"
 #include "listsp.h"
 #include <iostream>
@@ -13,19 +13,27 @@ struct muahang {
     long long GiaTri;
 };
 
-class HoaDon{
+class HoaDon {
     private:
         static int Ma_HD;
+        int id;
         int n;
-        muahang *data;
+        muahang data[100];
         long long tongtien;
         date ngay;
     public:
         HoaDon();
-        HoaDon(int, int, muahang*, long long, int, int ,int);
+        HoaDon(int, int, muahang d[], long long, int, int, int);
         ~HoaDon();
+        HoaDon& operator = (const HoaDon&);
         void set_hoadon();
-        int get_MaHD();
+        int get_id();
+        int get_n();
+        int get_day();
+        int get_month();
+        int get_year();
+        long long get_tongtien();
+        muahang get_muahang(int i);
         void tinhGiaTri(List_sp&);
         friend void xoakt(string &str);
         friend ostream& operator << (ostream &, HoaDon &);
