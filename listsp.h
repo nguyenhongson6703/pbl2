@@ -9,7 +9,7 @@ class List_sp: public List<sanpham> {
         sanpham tim_kiem_theo_ten(string value);
         bool check_ten(string value);
         void xoa_theo_ten(string value);
-        void set_dssp();
+        void update_dssp();
         void doc_sp();
         void ghi_sp();
         void in_sp();

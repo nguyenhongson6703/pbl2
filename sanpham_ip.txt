@@ -28,3 +28,6 @@ xi dau
 12
 tuong
 240000
+11
+dong ho
+3000000

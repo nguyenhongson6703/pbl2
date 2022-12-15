@@ -22,14 +22,9 @@ istream &operator >> (istream &in, sanpham &sp){
     return in;
 }
 ostream &operator << (ostream &out, const sanpham &sp){
-    out << setw(6) << sp.ma_sp << setw(10) << sp.ten_sp << setw(10) << sp.dongia_sp << endl;
+    out << setw(6) << sp.ma_sp << setw(30) << sp.ten_sp << setw(30) << sp.dongia_sp << endl;
     return out;
 } 
-void sanpham::output(){
-    cout << "\n Ma san pham:"<< ma_sp;
-    cout << "\n Ten san pham:"<< ten_sp;
-    cout << "\n Don gia :"<< dongia_sp;
-}
 int sanpham:: get_masp(){
     return this->ma_sp;
 }

@@ -10,7 +10,7 @@ class List_hd: public List<HoaDon> {
         void xoa_theo_id(int value);
         void doc_hd();
         void ghi_hd();
-        void in_hd();
+        void in_list_hd();
 };
 
 #endif

@@ -122,7 +122,7 @@ void List_hd :: ghi_hd (){
     FileHD.close();
 }
 
-void List_hd::in_hd(){
+void List_hd::in_list_hd(){
     string s;
     s = "hoadon_op.txt";
     this->xuat(s);

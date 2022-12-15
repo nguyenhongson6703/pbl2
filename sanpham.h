@@ -20,7 +20,6 @@ class sanpham {
         void set_masp(int x);
         void set_tensp(string x);
         void set_dongiasp(long long x);
-        void output();
 };
 #endif
       

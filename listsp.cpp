@@ -57,7 +57,7 @@ void List_sp::xoa_theo_ten(string value){
     }
 }
 
-void List_sp :: set_dssp(){
+void List_sp :: update_dssp(){
     while(true){
         cout << "-----------------------------------[ CAP NHAT SAN PHAM ]-----------------------------------"<< endl;
         cout << "1.Them loai san pham." << endl;
@@ -65,49 +65,68 @@ void List_sp :: set_dssp(){
         cout << "3.Cap nhat thong tin loai san pham." << endl;
         cout << "4.Thoat!" << endl;
         cout << "Moi ban chon tinh nang: " << endl;
-        int check; cin >>check;
+        int check, index; cin >>check;
         if (check == 1) {
-            sanpham s;
-            cin >> s;
-            this->them_cuoi(s);
-            this->ghi_sp();
+            do{
+                sanpham s;
+                cin >> s;
+                this->them_cuoi(s);
+                this->ghi_sp();
+                cout << "-->Danh sach sau khi khem san pham<--"<< endl;
+                this->in_sp();
+                cout << "Ban co muon tiep tuc them san pham khong (0/1)?" << endl;
+                cin >> index;
+            }while (index);
         }
         else if (check == 2) {
-            string str;
-            cout << "Nhap ten san pham can xoa: ";
-            fflush(stdin);
-            cin >> str;
-            this->xoa_theo_ten(str);
-            this->ghi_sp();
+            do{
+                string str;
+                cout << "Nhap ten san pham can xoa: ";
+                fflush(stdin);
+                cin >> str;
+                this->xoa_theo_ten(str);
+                this->ghi_sp();
+                cout << "-->Danh sach sau khi xoa san pham<--"<< endl;
+                this->in_sp();
+                cout << "Ban co muon tiep tuc xoa san pham khong (0/1)?" << endl;
+                cin >> index;
+            }while(index);
         }
         else if ( check == 3) {
-            string str;
-            cout << "Nhap ten san pham can cap nhat: ";
-            fflush(stdin);
-            cin >> str;
-            sanpham p;
-            p = this->tim_kiem_theo_ten(str);
-            this->xoa_theo_ten(str);
-            cin >> p;
-            cout << "-->Thong tin san pham sau khi cap nhat<-- "<< endl;
-            cout << p;
-            this->them_cuoi(p);
+            do{
+                string str;
+                cout << "Nhap ten san pham can cap nhat: ";
+                fflush(stdin);
+                cin >> str;
+                sanpham p;
+                p = this->tim_kiem_theo_ten(str);
+                this->xoa_theo_ten(str);
+                cin >> p;
+                cout << "-->Thong tin san pham sau khi cap nhat<-- "<< endl;
+                cout << p;
+                this->them_cuoi(p);
+                cout << "-->Danh sach sau khi cap nhat san pham<--"<< endl;
+                this->in_sp();
+                cout << "Ban co muon tiep tuc cap nhat san pham khong (0/1)?" << endl;
+                cin >> index;
+            }while(index);
         }
         else{
-            cout << "Ket thuc chinh sua hoa don!" << endl;
+            cout << "Ket thuc chinh sua danh sach san pham!" << endl;
+            cout << "----------------------------------------------------------------------------------" << endl;
             break;
         }
     }   
 }
 void List_sp :: doc_sp(){
-    char chtensp[100],chma[10],chgia[10];
+    char chtensp[50],chma[10],chgia[19];
     ifstream FileSP("sanpham_ip.txt");
     while (!FileSP.eof()){
         FileSP.getline(chma,10);
         int ma = atoi(chma);
-        FileSP.getline(chtensp,10);
+        FileSP.getline(chtensp,50);
         string tensp = chtensp;
-        FileSP.getline(chgia,10);
+        FileSP.getline(chgia,19);
         long long gia = atof(chgia);
         sanpham S(ma,tensp,gia);
         this->them_cuoi(S);

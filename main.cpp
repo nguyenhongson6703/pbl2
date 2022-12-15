@@ -38,14 +38,16 @@ int main(){
                         fflush(stdin);
                         cin >> str;
                         cout << "-->Thong tin san pham can tim<-- " << endl;
-                        cout << E.tim_kiem_theo_ten(str) << endl;
+                        sanpham p;
+                        p = E.tim_kiem_theo_ten(str);
+                        cout << p;
                         fflush(stdin);
                         cout << "Ban co muon tim kiem tiep hay khong (0/1)?" << endl;
                         cin >> sl1;
                     }while(sl1);
                 }
                 else if(sl == 2){
-                    E.set_dssp();
+                    E.update_dssp();
                 }
                 else{
                     break;
