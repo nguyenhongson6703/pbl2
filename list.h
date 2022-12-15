@@ -82,7 +82,8 @@ void List<T>::them_cuoi(T& value){
 }
 template<typename T>
 
-void List<T>::xuat(){
+void List<T>::xuat(string s){
+    ofstream output(s);
     NODE<T> *p = new NODE<T>;
     p = head;
     do{
