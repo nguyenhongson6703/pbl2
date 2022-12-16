@@ -5,10 +5,12 @@
 
 class List_hd: public List<HoaDon> {
     public:
-	    bool tim_kiem_theo_id(int value);
+	    HoaDon& tim_kiem_theo_id(int value);
+        bool check_hd(int value);
         void xoa_theo_id(int value);
         void doc_hd();
         void ghi_hd();
+        void in_list_hd();
 };
 
 #endif

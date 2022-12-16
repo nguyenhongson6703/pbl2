@@ -89,7 +89,9 @@ void List<T>::xuat(string s){
     do{
         // in du lieu ra
         cout << (p -> data);
+        cout << "------------------------------------------------------------------------------------" << endl;
         output << (p->data);
+        output << "------------------------------------------------------------------------------------" << endl;
         p = p -> next;
 
     }while (p != NULL);
@@ -118,8 +120,6 @@ void List<T>::xoa_cuoi(){
     }
     p -> prev = NULL;
     delete p;
-
-
 }
 
 template <typename T>
