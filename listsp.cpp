@@ -58,8 +58,8 @@ void List_sp::xoa_theo_ten(string value){
 }
 
 void List_sp :: update_dssp(){
-    this->doc_sp();
     while(true){
+        this->doc_sp();
         cout << "-----------------------------------[ CAP NHAT SAN PHAM ]-----------------------------------"<< endl;
         cout << "1.Them loai san pham." << endl;
         cout << "2.Xoa loai san pham." << endl;

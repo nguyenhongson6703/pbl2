@@ -18,7 +18,7 @@ int main(){
         int check; cin >> check;
         if(check == 1) {
             while (true){
-                cout <<"--------------------------------------[ SAN PHAM ]--------------------------------------" <<endl ;
+                cout <<"--------------------------------------[ QUAN LY SAN PHAM ]--------------------------------------" <<endl ;
                 cout << "1. Tra cuu cac loai san pham."<< endl;
                 cout << "2. Cap nhat thong tin danh sach san pham."<< endl;
                 cout << "3. Thoat!"<< endl;
