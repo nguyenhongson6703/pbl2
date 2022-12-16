@@ -48,7 +48,9 @@ int main(){
                     }
                 }
                 else if(sl == 2){
-                    E.update_dssp();
+                    List_sp A;
+                    A.update_dssp();
+                    E=A;
                 }
                 else{
                     break;

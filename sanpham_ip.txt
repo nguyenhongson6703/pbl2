@@ -10,11 +10,11 @@ my chinh
 20000
 chao goi
 10000
-ca rot
-13000
 bot ot
 20000
 dau an
 45000
-xi dau
-12000
+hanh
+2000
+cam
+20000

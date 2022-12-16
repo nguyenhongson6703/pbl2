@@ -118,6 +118,7 @@ void List_sp :: update_dssp(){
                 cout << "-->Thong tin san pham sau khi cap nhat<-- "<< endl;
                 cout << p;
                 this->them_cuoi(p);
+                this->ghi_sp();
                 cout << "-->Danh sach sau khi cap nhat san pham<--"<< endl;
                 this->in_sp();
                 cout << "Ban co muon tiep tuc cap nhat san pham khong (0/1)?" << endl;

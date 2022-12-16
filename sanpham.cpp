@@ -12,10 +12,8 @@ sanpham :: ~sanpham(){
 }
 
 sanpham& sanpham :: operator = (const sanpham& sp){
-    this->id = sp.id;
     this->ten_sp = sp.ten_sp;
     this->dongia_sp = sp.dongia_sp;
-    this->ma_sp--;
     return *this;
 }
 
