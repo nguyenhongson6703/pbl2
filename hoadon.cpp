@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 #include <string>
+#include <iomanip>
 #include "hoadon.h"
 using namespace std;
 
@@ -77,7 +78,7 @@ muahang HoaDon::get_muahang(int i){
     return data[i];
 }
 
-void set_hoadon(){
+void HoaDon :: set_hoadon(){
     while(true){
         cout << "Menu"<< endl;
         cout << "1.Them loai san pham." << endl;
@@ -151,4 +152,17 @@ istream& operator >> (istream &in, HoaDon &x){
     }while (check);
     x.n = i;
     return in;
+}
+void HoaDon::in_hoa_don(List_sp& x){
+    ofstream output("thanhtoan.txt");
+    output << "\n Hoa don ngay "<< this ->ngay.getday() << "/"<< this ->ngay.getmonth()<<"/"<< this -> ngay.getyear();
+    output << "\n ID: "<< this -> id << endl;
+    output << " STT" << setw(10) << "Ten mon" << setw(15) << "SL" << setw(20) << "Don gia" << setw(15) << "T.Tien" << endl;
+    for(int i=0 ;i < this ->n ; i++){
+        output << "\n "<< i + 1;
+        output << setw(10) << data[i].TenSP << setw(17) << data[i].SoLuong << setw(20) << x.tim_kiem_theo_ten(this->data[i].TenSP).get_dongiasp() <<setw(15) << data[i].GiaTri<< endl;
+    }
+    output <<  "-------------------------------------------------------------------------------------" << endl;
+    output << setw(6)<< " TONG TIEN"<< setw(54) <<  this ->tongtien;
+    output.close();
 }

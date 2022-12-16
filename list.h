@@ -71,7 +71,6 @@ void List<T>::them_cuoi(T& value){
         head = p;
         tail = p;
 
-
     }else{
         tail -> next = p;
         p -> prev = tail;

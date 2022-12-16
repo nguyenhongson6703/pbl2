@@ -4,7 +4,7 @@
 #include <fstream>
 using namespace std;
 
-sanpham List_sp::tim_kiem_theo_ten(string value){ 
+sanpham& List_sp::tim_kiem_theo_ten(string value){ 
 	NODE<sanpham> *p = new NODE<sanpham>;
     p = this->gethead();
     do{
@@ -95,7 +95,7 @@ void List_sp :: update_dssp(){
                 string str;
                 cout << "Nhap ten san pham can xoa: ";
                 fflush(stdin);
-                getline (cin , str);
+                getline(cin,str);
                 this->xoa_theo_ten(str);
                 this->ghi_sp();
                 cout << "-->Danh sach sau khi xoa san pham<--"<< endl;
@@ -110,7 +110,7 @@ void List_sp :: update_dssp(){
                 string str;
                 cout << "Nhap ten san pham can cap nhat: ";
                 fflush(stdin);
-                getline (cin , str);
+                getline(cin,str);
                 sanpham p;
                 p = this->tim_kiem_theo_ten(str);
                 this->xoa_theo_ten(str);
@@ -132,16 +132,14 @@ void List_sp :: update_dssp(){
     }   
 }
 void List_sp :: doc_sp(){
-    char chtensp[50],chma[10],chgia[19];
+    char chtensp[50], chgia[19];
     ifstream FileSP("sanpham_ip.txt");
     while (!FileSP.eof()){
-        FileSP.getline(chma,10);
-        int ma = atoi(chma);
         FileSP.getline(chtensp,50);
         string tensp = chtensp;
         FileSP.getline(chgia,19);
         long long gia = atof(chgia);
-        sanpham S(ma,tensp,gia);
+        sanpham S(tensp,gia);
         this->them_cuoi(S);
     }
     FileSP.close();    
@@ -153,15 +151,32 @@ void List_sp::ghi_sp(){
     p = gethead();
     do{
         if (p!=gettail())
-            FileSP << (p->data).get_id() << endl << (p->data).get_tensp() << endl << (p->data).get_dongiasp() << endl; 
+            FileSP << (p->data).get_tensp() << endl << (p->data).get_dongiasp() << endl; 
         else 
-            FileSP << (p->data).get_id() << endl << (p->data).get_tensp() << endl << (p->data).get_dongiasp() ;
+            FileSP << (p->data).get_tensp() << endl << (p->data).get_dongiasp() ;
         p = p -> next;
     } while (p != NULL);
 }
 
 void List_sp :: in_sp(){
-    string s;
-    s = "sanpham_op.txt";
-    this->xuat(s);
+    ofstream output("sanpham_op.txt");
+    NODE<sanpham> *p = new NODE<sanpham>;
+    p = this->gethead();
+    int i=0;
+    cout <<  "STT" << setw(30) << "TEN SAN PHAM" << setw(30) << "DON GIA" << endl;
+    output<<  "STT" << setw(30) << "TEN SAN PHAM" << setw(30) << "DON GIA" << endl;
+    cout << "------------------------------------------------------------------------------------" << endl;
+    output << "------------------------------------------------------------------------------------" << endl;
+    do{
+        i++;
+        cout << (i);
+        output << (i);
+        // in du lieu ra
+        cout << (p -> data);
+        cout << "------------------------------------------------------------------------------------" << endl;
+        output << (p->data);
+        output << "------------------------------------------------------------------------------------" << endl;
+        p = p -> next;
+
+    }while (p != NULL);
 }

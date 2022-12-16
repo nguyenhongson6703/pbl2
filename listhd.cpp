@@ -4,13 +4,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-HoaDon List_hd::tim_kiem_theo_id(int value){ 
+HoaDon& List_hd::tim_kiem_theo_id(int value){ 
     NODE<HoaDon>* p  = this->gethead();
     for(p ; p != NULL; p = p -> next){
     	if((p->data).get_id() == value){
     		return p->data;
 		}
 	}
+    
 }
 
 bool List_hd:: check_hd(int value){ 

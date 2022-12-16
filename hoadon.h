@@ -33,9 +33,11 @@ class HoaDon {
         int get_month();
         int get_year();
         long long get_tongtien();
-        muahang get_muahang(int i);
+        muahang get_muahang(int);
         void tinhGiaTri(List_sp&);
+        void in_hoa_don(List_sp&);
         friend void xoakt(string &str);
+        
         friend ostream& operator << (ostream &, HoaDon &);
         friend istream& operator >> (istream &, HoaDon &);
 };
