@@ -8,6 +8,14 @@ int main(){
     E.doc_sp();
     List_hd F;
     F.doc_hd();
+    // F.in_ra_mh();
+    // HoaDon A;
+    // cin >> A;
+    // cout << A;
+    // A.set_hoadon(E);
+    // cout << A;
+    
+
     while(true){
         system("cls");
         cout << "--------------------------------------[ MENU ]--------------------------------------" <<endl;
@@ -48,9 +56,7 @@ int main(){
                     }
                 }
                 else if(sl == 2){
-                    List_sp A;
-                    A.update_dssp();
-                    E=A;
+                    E.update_dssp();
                 }
                 else{
                     break;
@@ -75,26 +81,31 @@ int main(){
                 cout << "\n Nhap vao lua chon cua ban:";
                 cin >> sl2;
                 if(sl2 == 1){
+                    cout << "\n Thong tin cua tat ca cac hoa don la:";
+                    F.in_ra_mh();
+                    int select = 1;
                     do{
                         int x;
-                        cout << "\n Nhap vao ma id cua san pham can tim kiem";
+                        cout << "\n Nhap vao ma id cua hoa don  can tim kiem: ";
+                        cin >> x;
+                        if(F.tim_kiem_id(x) == false){
+                            cout << "\n Khong ton tai hoa don nay!";
+                            continue;
+                        }
                         HoaDon A;
                         A = F.tim_kiem_theo_id(x);
                         cout << "\n Thong tin cua hoa don can tim kiem la:";
                         cout << A;
                         cout << "\n Ban co muon truy cuu tiep khong (0/1)? ";
-                        int select;
-                        cin >> select;
-                        if(select == 0){
-                            break;
-                    }
-
-                    }while(true);
+                        int k;
+                        cin >> k;
+                        select = k;
+                    }while(select == 1);
                     
 
 
                 }else if(sl2 == 2){
-                    cout << "\n Nhap vao id cua san pham ma ban muon thay doi:";
+                    cout << "\n Nhap vao id cua hoa don ma ban muon thay doi:";
                     int x;
                     cin >> x;
                     cout << "\n Ban muon thuc hien thao tac nao:";
@@ -105,11 +116,13 @@ int main(){
                     cin >> select;
                     if(select == 1 ){
                         F.xoa_theo_id(x);
+                        F.ghi_hd();
                     }else{
-                        // HoaDon A ;
+                        // HoaDon A;
                         // A = F.tim_kiem_theo_id(x);
                         // A.set_hoadon();
-                        F.tim_kiem_theo_id(x).set_hoadon();
+                        F.tim_kiem_theo_id(x).set_hoadon(E);
+                        F.ghi_hd();
                     }
 
                 }else{

@@ -13,6 +13,16 @@ HoaDon& List_hd::tim_kiem_theo_id(int value){
 	}
     
 }
+bool List_hd::tim_kiem_id(int value){ 
+    NODE<HoaDon>* p  = this->gethead();
+    for(p ; p != NULL; p = p -> next){
+    	if((p->data).get_id() == value){
+    		return true;
+		}
+	}
+    return false;
+    
+}
 
 bool List_hd:: check_hd(int value){ 
     NODE<HoaDon>* p  = this->gethead();
@@ -127,4 +137,16 @@ void List_hd::in_list_hd(){
     string s;
     s = "hoadon_op.txt";
     this->xuat(s);
+}
+void List_hd ::in_ra_mh(){
+    NODE<HoaDon> *p = this -> gethead();
+    NODE<HoaDon> *q = this -> gettail();
+    do{ 
+        
+        cout << p ->data;
+        p = p -> next;
+    }while (p  != NULL);
+    delete p;
+    
+    
 }

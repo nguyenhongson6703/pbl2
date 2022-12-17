@@ -26,7 +26,7 @@ class HoaDon {
         HoaDon(int, int, muahang d[], long long, int, int, int);
         ~HoaDon();
         HoaDon& operator = (const HoaDon&);
-        void set_hoadon();
+        void set_hoadon(List_sp&);
         int get_id();
         int get_n();
         int get_day();
