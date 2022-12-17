@@ -13,5 +13,6 @@ class List_sp: public List<sanpham> {
         void doc_sp();
         void ghi_sp();
         void in_sp();
+        friend void xoakt(string &str);
 };
 #endif

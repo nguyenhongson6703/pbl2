@@ -78,35 +78,100 @@ muahang HoaDon::get_muahang(int i){
     return data[i];
 }
 
-void HoaDon :: set_hoadon(){
+void HoaDon :: set_hoadon(List_sp& A){
     while(true){
-        cout << "Menu"<< endl;
+        system("cls");
+        cout << "\n\t\t-----------Menu-----------"<< endl;
         cout << "1.Them loai san pham." << endl;
         cout << "2.Xoa loai san pham." << endl;
         cout << "3.Thay doi thong tin loai san pham." << endl;
-        cout << "4.Thay doi ngay thang.";
+        cout << "4.Thay doi ngay thang."<< endl;
         cout << "5.Thoat!." << endl;
         cout << "Moi ban chon tinh nang: " << endl;
         int check; cin >>check;
-        if (check == 1) {
+        if (check == 1){
             string str;
             int n;
+            
             cout << "Nhap ten san pham: "; 
             fflush(stdin);
             getline(cin,str);
-            
+            cout << "\n Nhap vao so luong san pham: ";
+            int x;
+            cin >> x;
+            this ->data[n].TenSP = str;
+            this ->data[n].SoLuong= x;
+            this -> n++;
+            this ->tinhGiaTri(A);
         }
         else if (check == 2) {
+            string str;
+            cout << "\n Nhap vao ten san pham ma ban muon xoa di: ";
+            fflush(stdin);
+            getline(cin,str);
+            int k;
+            for(int i =0;i<=n;i++){
+                if(this ->data[i].TenSP == str){
+                    k = i;
+                    break;
 
+                }
+                if(i == n){
+                    cout << "\n San pham nay khong ton tai trong hoa don xin kiem tra lai!";
+                    break;
+                }
+            }
+            if(k != n){
+                for(int i = k;i< n-1;i++){
+                this ->data[i] = this ->data[i+1];
+
+            }
+            this -> n--;
+            this ->tinhGiaTri(A);
+
+            }
+            
         }
         else if ( check == 3) {
+            string str;
+            cout << "\n Nhap vao ten san pham ma ban muon thay doi thong tin: ";
+            fflush(stdin);
+            getline(cin,str);
+            int i=0;
+            while (this ->data[i].TenSP != str)
+            {
+                i++;
+                if(i == n){
+                    cout << "\n San pham nay khong ton tai trong hoa don!";
+                    break;
+                }
+            }
+            if(i != n){
+                cout << "\n Ban muon thay doi so luong san pham nay thanh bao nhieu: ";
+                int x;
+                cin >> x;
+                this ->data[i].SoLuong= x;
+                this ->tinhGiaTri(A);
+            }
+
 
         }
         else if (check == 4) {
+            cout << "\n Thay doi ngay thang nam: ";
+            int x,y,z;
+            cout << "\n Nhap vao ngay: ";
+            cin >> x;
+            cout << "\n Nhap vao thang: ";
+            cin >> y;
+            cout << "\n Nhap vao nam: ";
+            cin >> z;
+            this ->ngay.setday(x);
+            this ->ngay.setmonth(y);
+            this ->ngay.setyear(z);
 
         }
         else if (check == 5){
-            cout << "Ket thuc chinh sua hoa don!" << endl;
+            cout << "\n Ket thuc chinh sua hoa don!" << endl;
             break;
         }
     }
@@ -139,7 +204,7 @@ istream& operator >> (istream &in, HoaDon &x){
     int check;
     int i = 0;
     do{
-        cout << "-->Nhap ten san pham thu "<< i+1 << endl;
+        cout << "-->Nhap ten san pham thu: "<< i+1 << endl;
         fflush(stdin);
         getline(in,x.data[i].TenSP);
         xoakt(x.data[i].TenSP);

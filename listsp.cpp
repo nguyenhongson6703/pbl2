@@ -4,6 +4,7 @@
 #include <fstream>
 using namespace std;
 
+void xoakt(string &str);
 sanpham& List_sp::tim_kiem_theo_ten(string value){ 
 	NODE<sanpham> *p = new NODE<sanpham>;
     p = this->gethead();
@@ -16,16 +17,19 @@ sanpham& List_sp::tim_kiem_theo_ten(string value){
 }
 bool List_sp::check_ten(string value){ 
 	NODE<sanpham> *p = new NODE<sanpham>;
-    bool temp = false;
     p = this->gethead();
+    string str;
     do{
-        if((p->data).get_tensp().compare(value) == 0) {
-			temp= true;
-            return temp;
+        str = (p->data).get_tensp();
+        for (int i=0;i<str.length();i++){
+            str[i] = tolower(str[i]);
+        }
+        if(str == value) {
+            return true;
 		}
         p = p -> next;
     }while (p != NULL);
-    return temp;
+    return false;
 }
 
 void List_sp::xoa_theo_ten(string value){
@@ -69,9 +73,11 @@ void List_sp :: update_dssp(){
         if (check == 1) {
             do{
                 sanpham s;
+                string str;
                 while(true){
                     cin >> s;
-                    string str = s.get_tensp();
+                    str = s.get_tensp();
+                    xoakt(str);
                     for (int i=0;i<str.length();i++){
                         str[i] = tolower(str[i]);
                     }
@@ -80,6 +86,7 @@ void List_sp :: update_dssp(){
                     }
                     else break;
                 }
+                s.set_tensp(str);
                 this->them_cuoi(s);
                 this->ghi_sp();
                 cout << "-->Danh sach sau khi khem san pham<--"<< endl;
@@ -95,10 +102,19 @@ void List_sp :: update_dssp(){
                 cout << "Nhap ten san pham can xoa: ";
                 fflush(stdin);
                 getline(cin,str);
-                this->xoa_theo_ten(str);
-                this->ghi_sp();
-                cout << "-->Danh sach sau khi xoa san pham<--"<< endl;
-                this->in_sp();
+                xoakt(str);
+                for (int i=0;i<str.length();i++){
+                    str[i] = tolower(str[i]);
+                }
+                if (this->check_ten(str)==0){
+                    throw string("San pham khong co trong danh sach!!!");
+                } 
+                else {
+                    this->xoa_theo_ten(str);
+                    this->ghi_sp();
+                    cout << "-->Danh sach sau khi xoa san pham<--"<< endl;
+                    this->in_sp();
+                }
                 cout << "Ban co muon tiep tuc xoa san pham khong (0/1)?" << endl;
                 cin >> index;
             }while(index);
@@ -110,16 +126,27 @@ void List_sp :: update_dssp(){
                 cout << "Nhap ten san pham can cap nhat: ";
                 fflush(stdin);
                 getline(cin,str);
-                sanpham p;
-                p = this->tim_kiem_theo_ten(str);
-                this->xoa_theo_ten(str);
-                cin >> p;
-                cout << "-->Thong tin san pham sau khi cap nhat<-- "<< endl;
-                cout << p;
-                this->them_cuoi(p);
-                this->ghi_sp();
-                cout << "-->Danh sach sau khi cap nhat san pham<--"<< endl;
-                this->in_sp();
+                xoakt(str);
+                for (int i=0;i<str.length();i++){
+                    str[i] = tolower(str[i]);
+                }
+                if (this->check_ten(str)==0){
+                    throw string("San pham khong co trong danh sach. Ban co the them loai san pham moi vao danh sach!");
+                } 
+                else {
+                    sanpham p;
+                    p = this->tim_kiem_theo_ten(str);
+                    this->xoa_theo_ten(str);
+                    cin >> p;
+                    cout << "-->Thong tin san pham sau khi cap nhat<-- "<< endl;
+                    cout << p;
+
+                    this->them_cuoi(p);
+                    this->ghi_sp();
+                    cout << "-->Danh sach sau khi cap nhat san pham<--"<< endl;
+                    this->in_sp();
+                }
+                
                 cout << "Ban co muon tiep tuc cap nhat san pham khong (0/1)?" << endl;
                 cin >> index;
             }while(index);

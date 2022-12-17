@@ -2,6 +2,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+void xoakt(string &str);
 sanpham :: sanpham(string ten , long long dg ){
     this->ten_sp = ten;
     this->dongia_sp = dg;
@@ -20,6 +21,7 @@ sanpham& sanpham :: operator = (const sanpham& sp){
 istream &operator >> (istream &in, sanpham &sp){
 	fflush(stdin);
     cout << "Nhap ten san pham: "; getline(in,sp.ten_sp);
+    xoakt(sp.ten_sp);
     cout << endl;
     cout << "Nhap don gia san pham: "; in >> sp.dongia_sp;
     return in;
@@ -39,6 +41,13 @@ void sanpham:: set_tensp(string x){
 }
 void sanpham:: set_dongiasp(long long x){
     this->dongia_sp = x;
+}
+void sanpham::lower_tensp(string x){
+    string str = this->get_tensp();
+    for (int i=0;i<str.length();i++){
+        str[i] = tolower(str[i]);
+    }
+    this->set_tensp(str);
 }
 
 

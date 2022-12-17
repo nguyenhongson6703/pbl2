@@ -15,9 +15,11 @@ class sanpham {
         friend istream &operator >> (istream &in, sanpham &sp);
         friend ostream &operator << (ostream &out, const sanpham &sp);
         string get_tensp();
+        friend void xoakt(string &str);
         long long get_dongiasp();
         void set_tensp(string x);
         void set_dongiasp(long long x);
+        void lower_tensp(string x);
 };
 #endif
       

@@ -11,6 +11,8 @@ class List_hd: public List<HoaDon> {
         void doc_hd();
         void ghi_hd();
         void in_list_hd();
+        void in_ra_mh();
+        bool tim_kiem_id(int value);
 };
 
 #endif
