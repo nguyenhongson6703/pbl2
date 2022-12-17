@@ -91,10 +91,10 @@ void HoaDon :: set_hoadon(){
         if (check == 1) {
             string str;
             int n;
-            
             cout << "Nhap ten san pham: "; 
             fflush(stdin);
-
+            getline(cin,str);
+            
         }
         else if (check == 2) {
 
@@ -110,7 +110,6 @@ void HoaDon :: set_hoadon(){
             break;
         }
     }
-    
 }
 
 int HoaDon::get_id(){

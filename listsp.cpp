@@ -59,7 +59,6 @@ void List_sp::xoa_theo_ten(string value){
 
 void List_sp :: update_dssp(){
     while(true){
-        this->doc_sp();
         cout << "-----------------------------------[ CAP NHAT SAN PHAM ]-----------------------------------"<< endl;
         cout << "1.Them loai san pham." << endl;
         cout << "2.Xoa loai san pham." << endl;
@@ -118,6 +117,7 @@ void List_sp :: update_dssp(){
                 cout << "-->Thong tin san pham sau khi cap nhat<-- "<< endl;
                 cout << p;
                 this->them_cuoi(p);
+                this->ghi_sp();
                 cout << "-->Danh sach sau khi cap nhat san pham<--"<< endl;
                 this->in_sp();
                 cout << "Ban co muon tiep tuc cap nhat san pham khong (0/1)?" << endl;
@@ -160,6 +160,7 @@ void List_sp::ghi_sp(){
 
 void List_sp :: in_sp(){
     ofstream output("sanpham_op.txt");
+    output.clear();
     NODE<sanpham> *p = new NODE<sanpham>;
     p = this->gethead();
     int i=0;

@@ -1,5 +1,3 @@
-sua
-10000
 trung
 3000
 my tom
@@ -10,17 +8,23 @@ my chinh
 20000
 chao goi
 10000
-ca rot
-13000
 bot ot
 20000
 dau an
 45000
-xi dau
-12000
 hanh
+2000
+cam
+20000
+oi
 10000
-toi
+nho
 10000
-duong
+gun
 10000
+sau rieng
+10000
+quyt
+10000
+sua
+6000
