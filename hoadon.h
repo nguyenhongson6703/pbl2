@@ -21,10 +21,12 @@ class HoaDon{
         int n;
         muahang data[100];
         long long tongtien;
+        long long tientra;
+        long long tienthoi;
         date ngay;
     public:
         HoaDon();
-        HoaDon(int, int, muahang d[], long long, int, int, int);
+        HoaDon(int, int, muahang d[], long long, long long, long long, int, int, int);
         ~HoaDon();
         HoaDon& operator = (const HoaDon&);
         void set_hoadon(List_sp&);
@@ -35,9 +37,13 @@ class HoaDon{
         int get_year();
         string get_TenSP(int );
         long long get_tongtien();
+        long long get_tienthoi();
+        long long get_tientra();
+
         void set_dg(List_sp&);
         void set_TenSP(int, string);
         muahang get_muahang(int);
+        void thanhtoan();
         void tinhGiaTri();
         void in_hoa_don();
         

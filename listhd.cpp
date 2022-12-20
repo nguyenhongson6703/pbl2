@@ -58,7 +58,7 @@ void List_hd::xoa_theo_id(int value){
 void List_hd :: doc_hd (){
     char chmahd[10];
     char chday[10],chmonth[10],chyear[10];
-    char ch_tongtien[19];
+    char ch_tongtien[19],ch_tientra[19], ch_tienthoi[19];
     char chn[10];
     char chtensp[50],ch_soluong[10],ch_dg[19],ch_giatri[19];
     ifstream FileHD("hoadon_ip.txt");
@@ -73,6 +73,10 @@ void List_hd :: doc_hd (){
         int year = atoi(chyear);
         FileHD.getline(ch_tongtien,19);
         long long tongtien = atof(ch_tongtien);
+        FileHD.getline(ch_tientra,19);
+        long long tientra = atof(ch_tientra);        
+        FileHD.getline(ch_tienthoi,19);
+        long long tienthoi = atof(ch_tienthoi);
         FileHD.getline(chn,10);
         int n = atoi(chn);
         muahang data[100];
@@ -86,7 +90,7 @@ void List_hd :: doc_hd (){
             FileHD.getline(ch_giatri,19);
             data[i].GiaTri = atof(ch_giatri);
         }
-        HoaDon S(mahd ,n, data, tongtien, day, month, year);
+        HoaDon S(mahd ,n, data, tongtien,tientra, tienthoi, day, month, year);
         this->them_cuoi(S);
     }
     FileHD.close();
@@ -102,7 +106,7 @@ void List_hd :: ghi_hd (){
         if (p!=q) 
         {
             FileHD << (p->data).get_id() << endl << (p->data).get_day() << endl <<(p->data).get_month() << endl << (p->data).get_year() << endl;
-            FileHD << (p->data).get_tongtien() << endl << (p->data).get_n() << endl;
+            FileHD << (p->data).get_tongtien() << endl << (p->data).get_tientra() << endl << (p->data).get_tienthoi() << endl << (p->data).get_n() << endl;
             for (int i=0; i<n; i++){
                 FileHD << (p->data).get_muahang(i).TenSP << endl;
                 FileHD << (p->data).get_muahang(i).SoLuong << endl;
@@ -112,7 +116,7 @@ void List_hd :: ghi_hd (){
         }
         else {
             FileHD << (p->data).get_id() << endl << (p->data).get_day() << endl <<(p->data).get_month() << endl << (p->data).get_year() << endl;
-            FileHD << (p->data).get_tongtien() << endl << (p->data).get_n() << endl;
+            FileHD << (p->data).get_tongtien() << endl << (p->data).get_tientra() << endl << (p->data).get_tienthoi() << (p->data).get_n() << endl;
             for (int i=0; i<n-1; i++){
                 FileHD << (p->data).get_muahang(i).TenSP << endl;
                 FileHD << (p->data).get_muahang(i).SoLuong << endl;
@@ -134,11 +138,12 @@ void List_hd::in_list_hd(){
     s = "hoadon_op.txt";
     this->xuat(s);
 }
-void List_hd ::in_ra_mh(){
+void List_hd ::in_ra_file(){
+    ofstream output("hoadon_op.txt");
     NODE<HoaDon> *p = this -> gethead();
-    NODE<HoaDon> *q = this -> gettail();
     do{ 
-        cout << p ->data;
+        output << p ->data;
+        output << "-------------------------------------------------------------------------------------" << endl;
         p = p -> next;
     }while (p  != NULL);
     delete p;

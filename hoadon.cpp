@@ -28,8 +28,10 @@ HoaDon::HoaDon(){
     ngay = date();
 }
 
-HoaDon::HoaDon(int mahd, int n, muahang d[], long long tongtien, int day, int month, int year){
+HoaDon::HoaDon(int mahd, int n, muahang d[], long long tongtien, long long tientra, long long tienthoi, int day, int month, int year){
     this->id = mahd;
+    this->tientra = tientra;
+    this->tienthoi = tienthoi;
     this-> n= n;
     for(int i=0;i<n;i++){
         this->data[i].TenSP = default_tensp(d[i].TenSP);
@@ -48,6 +50,8 @@ HoaDon::~HoaDon(){
 HoaDon& HoaDon:: operator = (const HoaDon& a) {
     this->id = a.id;
     this->n = a.n;
+    this->tientra = a.tientra;
+    this->tienthoi = a.tienthoi;
     for(int i=0;i<n;i++){
         this->data[i].TenSP = a.data[i].TenSP;
         this->data[i].TenSP = default_tensp(this->data[i].TenSP);
@@ -83,6 +87,12 @@ string HoaDon :: get_TenSP(int i){
 long long HoaDon::get_tongtien(){
     return tongtien;
 }
+long long HoaDon::get_tientra(){
+    return tientra;
+}
+long long HoaDon::get_tienthoi(){
+    return tienthoi;
+}
 
 muahang HoaDon :: get_muahang(int i){
     return data[i];
@@ -105,11 +115,36 @@ void HoaDon :: set_hoadon(List_sp& A){
         int check; cin >>check;
         if (check == 1){
             string str;
-            cout << "Nhap ten san pham: "; 
-            fflush(stdin);
-            getline(cin,str);
-            xoakt(str);
-            default_tensp(str);
+            int index;
+            bool temp = true;
+            while(temp){
+                temp = false;
+                cout << "Nhap ten san pham: "; 
+                fflush(stdin);
+                getline(cin,str);
+                xoakt(str);
+                default_tensp(str);
+                // for(int i =0;i<=n;i++){
+                //     if(this ->data[i].TenSP == str){
+                //         cout << "San pham da ton tai trong hoa don. Ban co muon chinh sua so luong hay khong ? (0/1) " <<endl;
+                //         cin >> index;
+                //         if (index) { 
+                //             cout << "Nhap vao so luong moi cua san pham: " ; cin >> index;
+                //             this->data[i].SoLuong = index;
+                //         }
+                //     }
+                //     break;
+                // }
+                try {
+                    if (A.check_ten(str) == 0){
+                        temp = true;
+                        throw string ("Thong tin san pham khong ton tai! Vui long nhap lai!");
+                    }
+                }
+                catch (string& e){
+                    cout << e << endl;
+                }
+            }
             cout << "Nhap vao so luong san pham: ";
             int x;
             cin >> x;
@@ -201,6 +236,13 @@ void HoaDon :: set_dg(List_sp& x) {
     }
 }
 
+void HoaDon :: thanhtoan(){
+    long long t;
+    cout << "\nNhap so tien nhan: "; cin >> t;
+    this->tientra = t;
+    this->tienthoi = -this->tongtien + this->tientra;
+}
+
 void HoaDon :: tinhGiaTri (){
     long long sum = 0;
     for (int i=0;i <this->n; i++){
@@ -211,21 +253,17 @@ void HoaDon :: tinhGiaTri (){
 }
 
 ostream& operator << (ostream &out, HoaDon &x){
-    // out << "Hoa don " << x.id << endl;
-    // out << x.ngay;
-    // for (int i=0; i<x.n; i++)
-    //     out << i + 1 << ". " << x.data[i].TenSP <<" "<< x.data[i].SoLuong << " " << x.data[i].GiaTri << endl;
-    // out << "Tong tien: " << x.tongtien <<endl;
-    // return out;
     out << " Hoa don ngay "<< x.ngay.getday() << "/"<< x.ngay.getmonth()<<"/"<< x. ngay.getyear();
     out << "\n ID: "<< x. id << endl;
-    out << " STT" << setw(10) << "Ten mon" << setw(15) << "SL" << setw(20) << "Don gia" << setw(15) << "T.Tien" << endl;
+    out << " STT" << setw(15) << "Ten mon" << setw(15) << "SL" << setw(20) << "Don gia" << setw(15) << "T.Tien" << endl;
     for(int i=0 ;i < x.n ; i++){
-        out << "\n "<< i + 1;
-        out << setw(12) << x.data[i].TenSP << setw(15) << x.data[i].SoLuong << setw(20) << x.data[i].dg <<setw(15) << x.data[i].GiaTri << endl;
+        out << "\n "<< setw(2) << i + 1;
+        out << setw(16) << x.data[i].TenSP << setw(15) << x.data[i].SoLuong << setw(20) << x.data[i].dg <<setw(15) << x.data[i].GiaTri << endl;
     }
     out <<  "-------------------------------------------------------------------------------------" << endl;
-    out << setw(6)<< " TONG TIEN"<< setw(54) <<  x.tongtien << endl;
+    out << setw(6)<< " TONG TIEN " << setw(58) <<  x.tongtien << endl;
+    out << setw(6)<< " THANH TOAN"<< setw(58) <<  x.tientra << endl;
+    out << setw(6)<< " TIEN THOI " << setw(58) <<  x.tienthoi << endl;
     return out;
 }
 
@@ -252,12 +290,14 @@ void HoaDon::in_hoa_don(){
     ofstream output("thanhtoan.txt");
     output << "\n Hoa don ngay "<< this ->ngay.getday() << "/"<< this ->ngay.getmonth()<<"/"<< this -> ngay.getyear();
     output << "\n ID: "<< this -> id << endl;
-    output << " STT" << setw(10) << "Ten mon" << setw(15) << "SL" << setw(20) << "Don gia" << setw(15) << "T.Tien" << endl;
+    output << " STT" << setw(15) << "Ten mon" << setw(15) << "SL" << setw(20) << "Don gia" << setw(15) << "T.Tien" << endl;
     for(int i=0 ;i < this ->n ; i++){
-        output << "\n "<< i + 1;
-        output << setw(12) << data[i].TenSP << setw(15) << data[i].SoLuong << setw(20) << data[i].dg <<setw(15) << data[i].GiaTri<< endl;
+        output << "\n "<< setw(2) << i + 1;
+        output << setw(16) << data[i].TenSP << setw(15) << data[i].SoLuong << setw(20) << data[i].dg <<setw(15) << data[i].GiaTri<< endl;
     }
     output <<  "-------------------------------------------------------------------------------------" << endl;
-    output << setw(6)<< " TONG TIEN"<< setw(54) <<  this ->tongtien;
+    output << setw(6)<< " TONG TIEN "<< setw(58) <<  this ->tongtien << endl;
+    output << setw(6)<< " THANH TOAN"<< setw(58) <<  this->tientra << endl;
+    output << setw(6)<< " TIEN THOI "<< setw(58) <<  this->tienthoi << endl;
     output.close();
 }

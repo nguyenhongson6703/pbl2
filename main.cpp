@@ -95,10 +95,14 @@ int main(){
             a.set_dg(E);
             // vif đã có hàm tính đơn giá , nên trong hàm tính giá trị ko cần tham số lít_sp
             a.tinhGiaTri();
+            cout << a.get_tongtien();
+            a.thanhtoan();
             cout << a;
+            system("pause");
             // hàm in hoadon cx tương tụ bỏ đi tham số list_sp
             a.in_hoa_don();
             F.them_cuoi(a);
+            F.in_ra_file();
             F.ghi_hd();
         }
         else if (check == 3){
@@ -159,10 +163,9 @@ int main(){
         }
         else if (check == 4){
             cout << "Ket thuc chuong trinh!" << endl;
-            cout << "----------------------------------------------------------------------------------" <<endl;
+            cout << "------------------------------------------------------------------------------------" <<endl;
             break;
         }
     }
-
 return 0;
 }

@@ -11,7 +11,7 @@ class List_hd: public List<HoaDon> {
         void doc_hd();
         void ghi_hd();
         void in_list_hd();
-        void in_ra_mh();
+        void in_ra_file();
 };
 
 #endif

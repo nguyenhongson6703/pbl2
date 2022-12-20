@@ -1,12 +1,10 @@
 
- Hoa don ngay 12/12/2022
- ID: 7
- STT   Ten mon             SL             Don gia         T.Tien
+ Hoa don ngay 12/12/2
+ ID: 11
+ STT        Ten mon             SL             Don gia         T.Tien
 
- 1         Sua              8                8000          64000
-
- 2       Trung              8                3000          24000
-
- 3      My tom             10                2000          20000
+  1             Sua             10                8000          80000
 -------------------------------------------------------------------------------------
- TONG TIEN                                                108000
+ TONG TIEN                                                      80000
+ THANH TOAN                                                         0
+ TIEN THOI                                                     -80000
