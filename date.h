@@ -20,7 +20,5 @@ class date{
         void setyear(int x); 
         int getyear();
         friend ostream& operator<<(ostream& output , date& x);
-        friend istream& operator>>(istream& input, date& x);
-        // void doctufile();
-    
+        friend istream& operator>>(istream& input, date& x);    
 };

@@ -1,20 +1,26 @@
-sua
-10000
-trung
-3000
-my tom
+My tom
 2000
-keo
+Keo
 1000
-my chinh
+My chinh
 20000
-chao goi
+Chao goi
 10000
-bot ot
+Bot ot
 20000
-dau an
-45000
-quyt
+Hanh
+2000
+Cam
+20000
+Sau rieng
+10000
+Giay
 200000
-ao
-150000
+Tuong
+12300
+Choi dot
+20000
+Trung
+3000
+Sua
+8000

@@ -13,7 +13,6 @@ HoaDon& List_hd::tim_kiem_theo_id(int value){
 	}
     
 }
-
 bool List_hd:: check_hd(int value){ 
     NODE<HoaDon>* p  = this->gethead();
     for(p ; p != NULL; p = p -> next){
@@ -54,12 +53,14 @@ void List_hd::xoa_theo_id(int value){
         return;
     }
 }
+
+// them một số câu lệnh cho việc nhập và xuất dơn giá
 void List_hd :: doc_hd (){
     char chmahd[10];
     char chday[10],chmonth[10],chyear[10];
     char ch_tongtien[19];
     char chn[10];
-    char chtensp[50],ch_soluong[10],ch_giatri[19];
+    char chtensp[50],ch_soluong[10],ch_dg[19],ch_giatri[19];
     ifstream FileHD("hoadon_ip.txt");
     while (!FileHD.eof()){
         FileHD.getline(chmahd,10);
@@ -80,10 +81,12 @@ void List_hd :: doc_hd (){
             data[i].TenSP = chtensp;
             FileHD.getline(ch_soluong,10);
             data[i].SoLuong = atoi(ch_soluong);
+            FileHD.getline(ch_dg,19);
+            data[i].dg = atof(ch_dg);
             FileHD.getline(ch_giatri,19);
             data[i].GiaTri = atof(ch_giatri);
         }
-        HoaDon S(mahd ,n, data, tongtien, day,month,year);
+        HoaDon S(mahd ,n, data, tongtien, day, month, year);
         this->them_cuoi(S);
     }
     FileHD.close();
@@ -103,6 +106,7 @@ void List_hd :: ghi_hd (){
             for (int i=0; i<n; i++){
                 FileHD << (p->data).get_muahang(i).TenSP << endl;
                 FileHD << (p->data).get_muahang(i).SoLuong << endl;
+                FileHD << (p->data).get_muahang(i).dg << endl;
                 FileHD << (p->data).get_muahang(i).GiaTri << endl;
             }
         }
@@ -112,10 +116,12 @@ void List_hd :: ghi_hd (){
             for (int i=0; i<n-1; i++){
                 FileHD << (p->data).get_muahang(i).TenSP << endl;
                 FileHD << (p->data).get_muahang(i).SoLuong << endl;
+                FileHD << (p->data).get_muahang(i).dg << endl;
                 FileHD << (p->data).get_muahang(i).GiaTri << endl;
             }
             FileHD << (p->data).get_muahang(n-1).TenSP << endl;
             FileHD << (p->data).get_muahang(n-1).SoLuong << endl;
+            FileHD << (p->data).get_muahang(n-1).dg << endl;
             FileHD << (p->data).get_muahang(n-1).GiaTri ;
         }
         p = p -> next;
@@ -127,4 +133,13 @@ void List_hd::in_list_hd(){
     string s;
     s = "hoadon_op.txt";
     this->xuat(s);
+}
+void List_hd ::in_ra_mh(){
+    NODE<HoaDon> *p = this -> gethead();
+    NODE<HoaDon> *q = this -> gettail();
+    do{ 
+        cout << p ->data;
+        p = p -> next;
+    }while (p  != NULL);
+    delete p;
 }

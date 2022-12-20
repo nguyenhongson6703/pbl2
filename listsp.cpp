@@ -4,6 +4,11 @@
 #include <fstream>
 using namespace std;
 
+
+// điều chỉnh lại setw và them hàm friend dèault...
+void xoakt(string &str);
+string default_tensp(string& x) ;
+
 sanpham& List_sp::tim_kiem_theo_ten(string value){ 
 	NODE<sanpham> *p = new NODE<sanpham>;
     p = this->gethead();
@@ -14,18 +19,19 @@ sanpham& List_sp::tim_kiem_theo_ten(string value){
         p = p -> next;
     }while (p != NULL);
 }
+
 bool List_sp::check_ten(string value){ 
 	NODE<sanpham> *p = new NODE<sanpham>;
-    bool temp = false;
     p = this->gethead();
+    string str;
     do{
-        if((p->data).get_tensp().compare(value) == 0) {
-			temp= true;
-            return temp;
+        str = (p->data).get_tensp();
+        if(str == value) {
+            return true;
 		}
         p = p -> next;
     }while (p != NULL);
-    return temp;
+    return false;
 }
 
 void List_sp::xoa_theo_ten(string value){
@@ -58,7 +64,6 @@ void List_sp::xoa_theo_ten(string value){
 }
 
 void List_sp :: update_dssp(){
-    this->doc_sp();
     while(true){
         cout << "-----------------------------------[ CAP NHAT SAN PHAM ]-----------------------------------"<< endl;
         cout << "1.Them loai san pham." << endl;
@@ -69,18 +74,26 @@ void List_sp :: update_dssp(){
         int check, index; cin >>check;
         if (check == 1) {
             do{
+                bool temp = true;
                 sanpham s;
-                while(true){
+                string str;
+                while(temp){
+                    temp = false;
                     cin >> s;
-                    string str = s.get_tensp();
-                    for (int i=0;i<str.length();i++){
-                        str[i] = tolower(str[i]);
+                    str = s.get_tensp();
+                    xoakt(str);
+                    str = default_tensp(str);
+                    try {
+                        if (this->check_ten(str)){
+                            temp = true;
+                            throw string("-->San pham da co trong danh sach! Moi nhap lai\n" );
+                        }
                     }
-                    if (this->check_ten(str)){
-                        throw string("San pham da co trong danh sach");
+                    catch (string& e) {
+                        cout << e << endl; 
                     }
-                    else break;
                 }
+                s.set_tensp(str);
                 this->them_cuoi(s);
                 this->ghi_sp();
                 cout << "-->Danh sach sau khi khem san pham<--"<< endl;
@@ -90,12 +103,26 @@ void List_sp :: update_dssp(){
             }while (index);
         }
         else if (check == 2) {
-            do{
-                // this->doc_sp();    
-                string str;
-                cout << "Nhap ten san pham can xoa: ";
-                fflush(stdin);
-                getline(cin,str);
+            string str;
+            do{   
+                bool temp = true;
+                while(temp){
+                    temp = false;
+                    cout << "Nhap ten san pham can xoa: ";
+                    fflush(stdin);
+                    getline(cin,str);
+                    xoakt(str);
+                    str = default_tensp(str);
+                    try {
+                        if (this->check_ten(str) == 0){
+                            temp = true;
+                            throw string("-->San pham khong co trong danh sach! Moi nhap lai\n");
+                        } 
+                    }
+                    catch (string& e) {
+                        cout << e << endl; 
+                    }
+                }
                 this->xoa_theo_ten(str);
                 this->ghi_sp();
                 cout << "-->Danh sach sau khi xoa san pham<--"<< endl;
@@ -105,22 +132,29 @@ void List_sp :: update_dssp(){
             }while(index);
         }
         else if ( check == 3) {
-            do{
-                // this->doc_sp();    
+            do{    
                 string str;
                 cout << "Nhap ten san pham can cap nhat: ";
                 fflush(stdin);
                 getline(cin,str);
-                sanpham p;
-                p = this->tim_kiem_theo_ten(str);
-                this->xoa_theo_ten(str);
-                cin >> p;
-                cout << "-->Thong tin san pham sau khi cap nhat<-- "<< endl;
-                cout << p;
-                this->them_cuoi(p);
-                this->ghi_sp();
-                cout << "-->Danh sach sau khi cap nhat san pham<--"<< endl;
-                this->in_sp();
+                xoakt(str);
+                str = default_tensp(str);
+                if (this->check_ten(str)==0){
+                    throw string("San pham khong co trong danh sach. Ban co the them loai san pham moi vao danh sach!");
+                } 
+                else {
+                    sanpham p;
+                    p = this->tim_kiem_theo_ten(str);
+                    this->xoa_theo_ten(str);
+                    cin >> p;
+                    cout << "-->Thong tin san pham sau khi cap nhat<-- "<< endl;
+                    cout << p;
+
+                    this->them_cuoi(p);
+                    this->ghi_sp();
+                    cout << "-->Danh sach sau khi cap nhat san pham<--"<< endl;
+                    this->in_sp();
+                }
                 cout << "Ban co muon tiep tuc cap nhat san pham khong (0/1)?" << endl;
                 cin >> index;
             }while(index);
@@ -160,7 +194,25 @@ void List_sp::ghi_sp(){
 }
 
 void List_sp :: in_sp(){
-    string s;
-    s = "sanpham_op.txt";
-    this->xuat(s);
+    ofstream output("sanpham_op.txt");
+    output.clear();
+    NODE<sanpham> *p = new NODE<sanpham>;
+    p = this->gethead();
+    int i=0;
+    cout  << setw(3) <<  "STT" << setw(30) << "TEN SAN PHAM" << setw(30) << "DON GIA" << endl;
+    output << setw(3) <<  "STT" << setw(30) << "TEN SAN PHAM" << setw(30) << "DON GIA" << endl;
+    cout << "------------------------------------------------------------------------------------" << endl;
+    output << "------------------------------------------------------------------------------------" << endl;
+    do{
+        i++;
+        cout << setw(3) << (i);
+        output << setw(3) << (i);
+        // in du lieu ra
+        cout << (p -> data);
+        cout << "------------------------------------------------------------------------------------" << endl;
+        output << (p->data);
+        output << "------------------------------------------------------------------------------------" << endl;
+        p = p -> next;
+
+    }while (p != NULL);
 }

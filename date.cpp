@@ -49,30 +49,30 @@ istream& operator>>(istream& input, date& x){
     // nhap vao nam
     int day,month,year;
     do{
-        cout << "\n Nhap vao nam:";
+        cout << "Nhap vao nam: ";
         input >> year;
         if(year > 2022){
-            cout << "\n Hay nhap lai gia tri cua nam:";
+            cout << "Hay nhap lai gia tri cua nam!";
         }
 
     }while(year > 2022);
 
     // nhap vao thang
     do{
-        cout << "\n Nhap vao thang:";
+        cout << "Nhap vao thang: ";
         input >> month;
         if(month < 1 || month > 12){
-            cout << "\n Hay nhap lai gia tri cua thang:";
+            cout << "Hay nhap lai gia tri cua thang!";
         }
 
     }while (month < 1 || month > 12);
     // nhap vao ngay
     if( month == 1 || month == 3 || month ==5 || month ==7 || month == 8|| month == 10 || month == 12){
         do{
-        cout << "\n Nhap vao ngay:";
+        cout << "Nhap vao ngay: ";
         input >> day;
         if(day < 1 || day > 31){
-            cout << "\n Hay nhap lai gia tri cua ngay!";
+            cout << "Hay nhap lai gia tri cua ngay!";
 
         }
         
@@ -84,10 +84,10 @@ istream& operator>>(istream& input, date& x){
     }else if(month == 4 || month == 6|| month ==9 || month == 11){
 
         do{
-        cout << "\n Nhap vao ngay:";
+        cout << "Nhap vao ngay: ";
         input >> day;
         if(day < 1 || day > 30){
-            cout << "\n Hay nhap lai gia tri cua ngay!";
+            cout << "Hay nhap lai gia tri cua ngay!";
 
         }
         
@@ -96,10 +96,10 @@ istream& operator>>(istream& input, date& x){
     }else{
         if(( year % 4 == 0 && year % 100 != 0) || year % 400 == 0){
             do{
-                cout << "\n Nhap vao ngay:";
+                cout << "Nhap vao ngay: ";
                 input >> day;
                 if( day < 1 || day > 29){
-                    cout << "\n Nhap lai ngay!";
+                    cout << "Nhap lai ngay! ";
 
                 }
 
@@ -107,10 +107,10 @@ istream& operator>>(istream& input, date& x){
 
         }else{
             do{
-                cout << "\n Nhap vao ngay:";
+                cout << "Nhap vao ngay: ";
                 input >> day;
                 if( day < 1 || day > 28){
-                    cout << "\n Nhap lai ngay!";
+                    cout << "Nhap lai ngay! ";
 
                 }
 
@@ -124,23 +124,4 @@ istream& operator>>(istream& input, date& x){
     x.setyear(year);
     return input;
 }
-// void date::doctufile(){
-
-//     ifstream input("date.txt");
-
-//     char songay[100], sothang[100], sonam[100];
-    
-//     while(!input.eof()){
-//     input >> songay;
-//     input >> sothang;
-//     input >> sonam;
-
-//     }
-//     this -> day = atoi(songay);
-//     this -> month = atoi(sothang);
-//     this ->year = atoi(sonam);
-
-//     input.close();
-    
-// }
 

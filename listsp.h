@@ -4,7 +4,7 @@
 #include "list.h"
 #include "sanpham.h"
 
-class List_sp: public List<sanpham> {
+class List_sp: public List<sanpham>{
     public:
         sanpham& tim_kiem_theo_ten(string value);
         bool check_ten(string value);
@@ -13,5 +13,7 @@ class List_sp: public List<sanpham> {
         void doc_sp();
         void ghi_sp();
         void in_sp();
+        friend void xoakt(string &str);
+        friend string default_tensp(string& x);
 };
 #endif
