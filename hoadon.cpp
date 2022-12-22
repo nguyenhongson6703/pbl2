@@ -112,8 +112,8 @@ void HoaDon :: set_hoadon(List_sp& A){
         cout << "4.Thay doi ngay thang."<< endl;
         cout << "5.Thoat!." << endl;
         cout << "Moi ban chon tinh nang: " << endl;
-        int check; cin >>check;
-        if (check == 1){
+        string check; cin >>check;
+        if (check == "1"){
             string str;
             int index;
             bool temp = true;
@@ -124,21 +124,10 @@ void HoaDon :: set_hoadon(List_sp& A){
                 getline(cin,str);
                 xoakt(str);
                 default_tensp(str);
-                // for(int i =0;i<=n;i++){
-                //     if(this ->data[i].TenSP == str){
-                //         cout << "San pham da ton tai trong hoa don. Ban co muon chinh sua so luong hay khong ? (0/1) " <<endl;
-                //         cin >> index;
-                //         if (index) { 
-                //             cout << "Nhap vao so luong moi cua san pham: " ; cin >> index;
-                //             this->data[i].SoLuong = index;
-                //         }
-                //     }
-                //     break;
-                // }
                 try {
                     if (A.check_ten(str) == 0){
                         temp = true;
-                        throw string ("Thong tin san pham khong ton tai! Vui long nhap lai!");
+                        throw string ("Thong tin san pham ton tai! Vui long nhap lai!");
                     }
                 }
                 catch (string& e){
@@ -153,7 +142,7 @@ void HoaDon :: set_hoadon(List_sp& A){
             this -> n++;
             this ->tinhGiaTri();
         }
-        else if (check == 2) {
+        else if (check == "2") {
             string str;
             cout << "\n Nhap vao ten san pham ma ban muon xoa di: ";
             fflush(stdin);
@@ -180,7 +169,7 @@ void HoaDon :: set_hoadon(List_sp& A){
             }
             
         }
-        else if ( check == 3) {
+        else if ( check == "3") {
             string str;
             cout << "\n Nhap vao ten san pham ma ban muon thay doi thong tin: ";
             fflush(stdin);
@@ -206,7 +195,7 @@ void HoaDon :: set_hoadon(List_sp& A){
 
 
         }
-        else if (check == 4) {
+        else if (check == "4") {
             cout << "\n Thay doi ngay thang nam: ";
             int x,y,z;
             cout << "\n Nhap vao ngay: ";
@@ -220,7 +209,7 @@ void HoaDon :: set_hoadon(List_sp& A){
             this ->ngay.setyear(z);
 
         }
-        else if (check == 5){
+        else if (check == "5"){
             cout << "\n Ket thuc chinh sua hoa don!" << endl;
             break;
         }
@@ -232,6 +221,10 @@ int HoaDon::get_id(){
 }
 void HoaDon :: set_dg(List_sp& x) {
     for(int i=0;i<this->n;i++){
+        string str = this->data[i].TenSP;
+        if(x.check_ten(str) == 0) {
+            throw string ( str  + " khong ton tai !!!");
+        }
         this->data[i].dg = x.tim_kiem_theo_ten(this->data[i].TenSP).get_dongiasp();
     }
 }
@@ -269,7 +262,7 @@ ostream& operator << (ostream &out, HoaDon &x){
 
 istream& operator >> (istream &in, HoaDon &x){ 
     cin >> x.ngay;
-    int check;
+    string check;
     int i = 0;
     do{
         cout << "-->Nhap ten san pham thu: "<< i+1 << endl;
@@ -279,10 +272,13 @@ istream& operator >> (istream &in, HoaDon &x){
         default_tensp(x.data[i].TenSP);  
         cout << "-->Nhap so luong san pham:"<< endl;
         in >> x.data[i].SoLuong;
-        cout << "-->Ban co muon nhap tiep khong (0/1): " << endl;
-        cin >> check;
+        while (true) {
+            cout << "-->Ban co muon nhap tiep khong (0: Dung lai / 1: Tiep tuc): " << endl;
+            cin >> check;
+            if (check=="0"||check=="1") break;
+        }
         ++i;
-    }while (check);
+    }while (check=="1");
     x.n = i;
     return in;
 }

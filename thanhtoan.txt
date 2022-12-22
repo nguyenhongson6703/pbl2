@@ -1,10 +1,10 @@
 
- Hoa don ngay 12/12/2
- ID: 11
+ Hoa don ngay 12/12/2022
+ ID: 101
  STT        Ten mon             SL             Don gia         T.Tien
 
-  1             Sua             10                8000          80000
+  1          Sdjasd              3                   0              0
 -------------------------------------------------------------------------------------
- TONG TIEN                                                      80000
+ TONG TIEN                                                          0
  THANH TOAN                                                         0
- TIEN THOI                                                     -80000
+ TIEN THOI                                                          0

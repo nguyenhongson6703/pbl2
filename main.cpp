@@ -20,24 +20,28 @@ int main(){
         cout << "3.Quan ly hoa don." << endl;
         cout << "4.Thoat!" <<endl;
         cout << "Moi ban chon tinh nang: ";
-        int check; cin >> check;
-        if(check == 1) {
+        string check; cin >> check;
+        if(check == "1") {
             while (true){
                 cout <<"--------------------------------------[ QUAN LY SAN PHAM ]--------------------------------------" <<endl ;
                 cout << "1. Tra cuu cac loai san pham."<< endl;
                 cout << "2. Cap nhat thong tin danh sach san pham."<< endl;
                 cout << "3. Thoat!"<< endl;
-                int sl,sl1;
+                string sl,sl1;
                 cout << "Moi ban chon tinh nang: ";
                 cin >> sl;
-                if(sl == 1){
+                if(sl == "1"){
                     cout << "-----------------------------[ DANH SACH CAC SAN PHAM ]-----------------------------" << endl;
                     E.in_sp();
                     system("pause");
                     fflush(stdin);
-                    cout << "Ban co muon xem noi dung cu the cua mot san pham (0/1) ? " << endl;
-                    cin >> sl1;
-                    while(sl1){
+                    while (true) {
+                        cout << "Ban co muon xem noi dung cu the cua mot san pham (0: Dung lai / 1: Tiep tuc) ? " << endl;
+                        cin >> sl1;
+                        if (sl1=="1"||sl1=="0") break;
+                    }
+                    
+                    while(sl1=="1"){
                         bool temp = true;
                         string str;
                         while (temp){
@@ -62,11 +66,14 @@ int main(){
                         p = E.tim_kiem_theo_ten(str);
                         cout << "\t#" << p;
                         fflush(stdin);
-                        cout << "Ban co muon tim kiem tiep hay khong (0/1)?" << endl;
-                        cin >> sl1;
+                        while (true) {
+                            cout << "Ban co muon xem noi dung cu the cua mot san pham (0: Dung lai / 1: Tiep tuc) ? " << endl;
+                            cin >> sl1;
+                            if (sl1=="1"||sl1=="0") break;
+                        }
                     }
                 }
-                else if(sl == 2){
+                else if(sl == "2"){
                     try{
                         E.update_dssp();
                     } 
@@ -79,7 +86,7 @@ int main(){
                 }
             }
         }
-        else if (check ==2){
+        else if (check =="2"){
             HoaDon a;
             cin >> a;
             //set lại tên theo mặc định , nên tạo thêm hai hàm trong hoadon.cpp
@@ -92,32 +99,42 @@ int main(){
             // tại trong hoa don in ra có đơn giá , nên chúng ta cần set_dg của san phâmr trục tiếp trong hóa đơn luôn
             // vì trong hàm operator << chỉ chứa đc hai tham số , nên ko thể thêm list vào đc 
             // làm cai nay cx tiẹn hon cho viec tính giá trị
-            a.set_dg(E);
-            // vif đã có hàm tính đơn giá , nên trong hàm tính giá trị ko cần tham số lít_sp
-            a.tinhGiaTri();
-            cout << a.get_tongtien();
-            a.thanhtoan();
-            cout << a;
+            int k=1;
+            try {
+                a.set_dg(E);
+            }
+            catch (string &s) {
+                cout << s << endl;
+                k = 0;
+            }
             system("pause");
-            // hàm in hoadon cx tương tụ bỏ đi tham số list_sp
-            a.in_hoa_don();
-            F.them_cuoi(a);
-            F.in_ra_file();
-            F.ghi_hd();
+            // vif đã có hàm tính đơn giá , nên trong hàm tính giá trị ko cần tham số lít_sp
+            if (k==1){
+                a.tinhGiaTri();
+                cout <<"TONG TIEN: " << a.get_tongtien();
+                a.thanhtoan();
+                cout << a;
+                system("pause");
+                // hàm in hoadon cx tương tụ bỏ đi tham số list_sp
+                a.in_hoa_don();
+                F.them_cuoi(a);
+                F.in_ra_file();
+                F.ghi_hd();
+            }
         }
-        else if (check == 3){
+        else if (check == "3"){
             while (true){
                 cout <<"-----------------------------------[ QUAN LY HOA DON ]-----------------------------------" <<endl ;
                 cout << "1. Tra cuu cac hoa don."<< endl;
                 cout << "2. Cap nhat thong tin danh sach hoa don."<< endl;
                 cout << "3. Thoat!"<< endl;
-                int sl2;
+                string sl2;
                 cout << "Nhap vao lua chon cua ban: ";
                 cin >> sl2;
-                if(sl2 == 1){
+                if(sl2 == "1"){
                     cout << "-->Thong tin cua tat ca cac hoa don la:" <<endl;
                     F.in_list_hd();
-                    int select = 1;
+                    string select = "1";
                     do{
                         int x;
                         cout << "\n-->Nhap vao ma id cua hoa don can tim kiem: " << endl;
@@ -131,15 +148,19 @@ int main(){
                         A = F.tim_kiem_theo_id(x);
                         cout << "-->Thong tin cua hoa don can tim kiem la: " <<endl;
                         cout << A;
-                        cout << "-->Ban co muon truy cuu tiep khong (0/1)? ";
-                        int k;
-                        cin >> k;
+                        string k;
+                        
+                        while (true) {
+                            cout << "Ban co muon xem noi dung cu the cua mot san pham (0: Dung lai / 1: Tiep tuc) ? " << endl;
+                            cin >> k;
+                            if (k=="1"||k=="0") break;
+                        }
                         select = k;
-                    }while(select == 1);
+                    }while(select == "1");
                     
 
 
-                }else if(sl2 == 2){
+                }else if(sl2 == "2"){
                     cout << "-->Nhap vao id cua hoa don ma ban muon thay doi:";
                     int x;
                     cin >> x;
@@ -147,9 +168,9 @@ int main(){
                     cout << "\n1.Xoa";
                     cout << "\n2.Thay doi thong tin cua hoa don";
                     cout << "\nLua chon:";
-                    int select;
+                    string select;
                     cin >> select;
-                    if(select == 1 ){
+                    if(select == "1" ){
                         F.xoa_theo_id(x);
                         F.ghi_hd();
                     }else{
@@ -161,7 +182,7 @@ int main(){
                 }
             }
         }
-        else if (check == 4){
+        else if (check == "4"){
             cout << "Ket thuc chuong trinh!" << endl;
             cout << "------------------------------------------------------------------------------------" <<endl;
             break;

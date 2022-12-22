@@ -71,8 +71,8 @@ void List_sp :: update_dssp(){
         cout << "3.Cap nhat thong tin loai san pham." << endl;
         cout << "4.Thoat!" << endl;
         cout << "Moi ban chon tinh nang: " << endl;
-        int check, index; cin >>check;
-        if (check == 1) {
+        string check, index; cin >>check;
+        if (check == "1") {
             do{
                 bool temp = true;
                 sanpham s;
@@ -98,11 +98,14 @@ void List_sp :: update_dssp(){
                 this->ghi_sp();
                 cout << "-->Danh sach sau khi khem san pham<--"<< endl;
                 this->in_sp();
-                cout << "Ban co muon tiep tuc them san pham khong (0/1)?" << endl;
-                cin >> index;
-            }while (index);
+                while (true) {
+                    cout << "Ban co muon xem noi dung cu the cua mot san pham (0: Dung lai / 1: Tiep tuc) ? " << endl;
+                    cin >> index;
+                    if (index=="1"||index=="0") break;
+                }
+            }while (index=="1");
         }
-        else if (check == 2) {
+        else if (check == "2") {
             string str;
             do{   
                 bool temp = true;
@@ -127,11 +130,14 @@ void List_sp :: update_dssp(){
                 this->ghi_sp();
                 cout << "-->Danh sach sau khi xoa san pham<--"<< endl;
                 this->in_sp();
-                cout << "Ban co muon tiep tuc xoa san pham khong (0/1)?" << endl;
-                cin >> index;
-            }while(index);
+                while (true) {
+                    cout << "Ban co muon xem noi dung cu the cua mot san pham (0: Dung lai / 1: Tiep tuc) ? " << endl;
+                    cin >> index;
+                    if (index=="1"||index=="0") break;
+                }
+            }while(index=="1");
         }
-        else if ( check == 3) {
+        else if ( check == "3") {
             do{    
                 string str;
                 cout << "Nhap ten san pham can cap nhat: ";
@@ -155,9 +161,12 @@ void List_sp :: update_dssp(){
                     cout << "-->Danh sach sau khi cap nhat san pham<--"<< endl;
                     this->in_sp();
                 }
-                cout << "Ban co muon tiep tuc cap nhat san pham khong (0/1)?" << endl;
-                cin >> index;
-            }while(index);
+                while (true) {
+                    cout << "Ban co muon xem noi dung cu the cua mot san pham (0: Dung lai / 1: Tiep tuc) ? " << endl;
+                    cin >> index;
+                    if (index=="1"||index=="0") break;
+                }
+            }while(index=="1");
         }
         else{
             cout << "Ket thuc chinh sua danh sach san pham!" << endl;
